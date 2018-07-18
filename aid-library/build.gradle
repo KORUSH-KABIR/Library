@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven'
 
-group = 'korush.kabir'
+group = 'com.github.KORUSH-KABIR'
 version = '1.0.0'
 
 android {
