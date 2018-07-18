@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         applicationId "ir.phoenix_iran.library"
         minSdkVersion 16
@@ -19,8 +19,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
-    implementation project(':aid-library')
+    implementation 'com.github.KORUSH-KABIR:Library:b66594b195'
+    //implementation project(':aid-library')
 }

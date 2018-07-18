@@ -5,7 +5,7 @@ group = 'korush.kabir'
 version = '1.0.0'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 21
@@ -24,15 +24,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:support-annotations:27.1.1'
-    implementation 'com.android.support:support-compat:27.1.1'
-    implementation 'com.android.support:support-core-ui:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    implementation 'com.android.support:support-annotations:26.1.0'
+    implementation 'com.android.support:support-compat:26.1.0'
+    implementation 'com.android.support:support-core-ui:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
-    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.balysv:material-ripple:1.0.2'
     //profile
     implementation 'de.hdodenhof:circleimageview:2.1.0'
