@@ -7,15 +7,20 @@ import com.koushikdutta.async.http.AsyncHttpPost;
 import com.koushikdutta.async.http.AsyncHttpResponse;
 import com.koushikdutta.async.http.body.MultipartFormDataBody;
 
+import java.io.File;
+
 public class LoadServer {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
     private Activity activity;
-    private String[] key;
-    private String[] value;
     private String url;
-    private int length;
+    private String[] keyS;
+    private String[] valueS;
+    private int lengthS;
+    private String[] keyF;
+    private String[] valueF;
+    private int lengthF;
 
     public LoadServer(Activity activity){
         this.activity = activity;
@@ -28,16 +33,29 @@ public class LoadServer {
         return this;
     }
 
-    private void requests(MultipartFormDataBody body){
-        for (int position = 0; position <= length; position++) {
-            body.addStringPart(key[position], value[position]);
+    private void requestsString(MultipartFormDataBody body){
+        for (int position = 0; position <= lengthS; position++) {
+            body.addStringPart(keyS[position], valueS[position]);
         }
     }
 
-    public LoadServer addRequest(String[] key , String[] value , int length){
-        this.key = key;
-        this.value = value;
-        this.length = length - 1;
+    private void requestsFile(MultipartFormDataBody body){
+        for (int position = 0; position <= lengthF; position++) {
+            body.addFilePart(keyF[position], new File(valueF[position]));
+        }
+    }
+
+    public LoadServer addStringRequest(String[] key , String[] value , int length){
+        this.keyS = key;
+        this.valueS = value;
+        this.lengthS = length - 1;
+        return this;
+    }
+
+    public LoadServer addFileRequest(String[] key , String[] value , int length){
+        this.keyF = key;
+        this.valueF = value;
+        this.lengthF = length - 1;
         return this;
     }
 
@@ -49,7 +67,13 @@ public class LoadServer {
 
         MultipartFormDataBody body = new MultipartFormDataBody();
 
-        requests(body);
+        if(!keyF[0].equals("")){
+            requestsString(body);
+            requestsFile(body);
+        }
+        else {
+            requestsString(body);
+        }
 
         post.setBody(body);
 
