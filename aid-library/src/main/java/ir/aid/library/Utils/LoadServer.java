@@ -67,12 +67,9 @@ public class LoadServer {
 
         MultipartFormDataBody body = new MultipartFormDataBody();
 
-        if(!keyF[0].equals("")){
-            requestsString(body);
+        requestsString(body);
+        if(keyF!=null){
             requestsFile(body);
-        }
-        else {
-            requestsString(body);
         }
 
         post.setBody(body);
