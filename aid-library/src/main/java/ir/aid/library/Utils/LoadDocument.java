@@ -9,7 +9,7 @@ import com.koushikdutta.async.http.body.MultipartFormDataBody;
 
 import java.io.File;
 
-public class LoadServer {
+public class LoadDocument {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
@@ -22,11 +22,11 @@ public class LoadServer {
     private String[] valueF;
     private int lengthF;
 
-    public LoadServer(Activity activity){
+    public LoadDocument(Activity activity){
         this.activity = activity;
     }
 
-    public LoadServer setConfigUrl(String url){
+    public LoadDocument setConfigUrl(String url){
         if (!url.equals("")) {
             this.url = url;
         }
@@ -45,14 +45,14 @@ public class LoadServer {
         }
     }
 
-    public LoadServer addStringRequest(String[] key , String[] value , int length){
+    public LoadDocument addStringRequest(String[] key , String[] value , int length){
         this.keyS = key;
         this.valueS = value;
         this.lengthS = length - 1;
         return this;
     }
 
-    public LoadServer addFileRequest(String[] key , String[] value , int length){
+    public LoadDocument addFileRequest(String[] key , String[] value , int length){
         this.keyF = key;
         this.valueF = value;
         this.lengthF = length - 1;
@@ -109,7 +109,7 @@ public class LoadServer {
         });
     }
 
-    public LoadServer getAnswer(final ConfigLoad configLoad){
+    public LoadDocument getAnswer(final ConfigLoad configLoad){
 
         new Thread(new Runnable() {
             @Override
