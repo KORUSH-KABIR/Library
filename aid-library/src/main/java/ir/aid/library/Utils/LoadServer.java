@@ -79,37 +79,44 @@ public class LoadServer {
             public void onCompleted(final Exception e, AsyncHttpResponse source, final String result) {
 
                 if (e != null){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             e.printStackTrace();
                             configLoad.notConnection("can not Connect to Server");
                         }
                     });
+                    t.start();
                 }
                 else if (!result.equals("")){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            configLoad.success(result);
-                        }
+                            configLoad.success(result);                        }
                     });
+                    t.start();
                 }
                 else if (result.equals("null")){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configLoad.nullable("request is null");
                         }
                     });
+                    t.start();
                 }
             }
         });
     }
 
-    public LoadServer getAnswer(ConfigLoad configLoad){
+    public LoadServer getAnswer(final ConfigLoad configLoad){
 
-        load(configLoad);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                load(configLoad);
+            }
+        }).start();
 
         return this;
     }

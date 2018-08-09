@@ -58,53 +58,66 @@ public class RegisterServer {
             public void onCompleted(final Exception e, AsyncHttpResponse source, String result) {
 
                 if (e != null){
-                    activity.runOnUiThread(new Runnable() {
+
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             e.printStackTrace();
                             configRegister.notConnection("can not Connect to Server");
                         }
                     });
+                    t.start();
                 }
                 else if (result.equals("old")){
-                    activity.runOnUiThread(new Runnable() {
+
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configRegister.haveThisAccount("Already have this username");
                         }
                     });
+                    t.start();
                 }
                 else if (result.equals("ok")){
-                    activity.runOnUiThread(new Runnable() {
+
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configRegister.success("registering... success!");
                         }
                     });
+                    t.start();
                 }
                 else if (result.equals("no")){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configRegister.error("registering... failed!");
                         }
                     });
+                    t.start();
                 }
                 else if (result.equals("null")){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configRegister.nullable("failed!");
                         }
                     });
+                    t.start();
                 }
             }
         });
     }
 
-    public RegisterServer getAnswer(ConfigRegister configRegister){
+    public RegisterServer getAnswer(final ConfigRegister configRegister){
 
-        register(configRegister);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                register(configRegister);
+            }
+        }).start();
 
         return this;
     }

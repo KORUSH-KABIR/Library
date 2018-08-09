@@ -58,53 +58,64 @@ public class LoginServer {
             public void onCompleted(final Exception e, AsyncHttpResponse source, String result) {
 
                 if (e != null){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             e.printStackTrace();
                             configLogin.notConnection("can not Connect to Server");
                         }
                     });
+                    t.start();
                 }
                 else if (result.equals("ban")){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configLogin.banningOrders("banned Account");
                         }
                     });
+                    t.start();
                 }
                 else if (result.equals("yes")){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configLogin.success("have Account");
                         }
                     });
+                    t.start();
                 }
                 else if (result.equals("no")){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configLogin.notFound("have not Account");
                         }
                     });
+                    t.start();
                 }
                 else if (result.equals("null")){
-                    activity.runOnUiThread(new Runnable() {
+                    Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             configLogin.nullable("request is null");
                         }
                     });
+                    t.start();
                 }
             }
         });
     }
 
-    public LoginServer getAnswer(ConfigLogin configLogin){
+    public LoginServer getAnswer(final ConfigLogin configLogin){
 
-        login(configLogin);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                login(configLogin);
+            }
+        }).start();
 
         return this;
     }
