@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +22,31 @@ public class TabUtils {
     private TabLayout tabLayout;
     private View view;
     private FragmentAdapter fragmentAdapter;
+    private int position;
 
     public TabUtils (AppCompatActivity activity , int viewPagerId , int tabLayoutId){
         this.activity = activity;
         view = activity.getWindow().getDecorView();
         viewPager = (ViewPager) view.findViewById(viewPagerId);
-        viewPager.setCurrentItem(1);
         tabLayout = (TabLayout) view.findViewById(tabLayoutId);
+        fragmentAdapter = new FragmentAdapter(activity.getSupportFragmentManager());
+        viewPager.setAdapter(fragmentAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    public TabUtils (AppCompatActivity activity , ViewGroup viewGroup, int viewPagerId , int tabLayoutId){
+        this.activity = activity;
+        viewPager = (ViewPager) viewGroup.findViewById(viewPagerId);
+        tabLayout = (TabLayout) viewGroup.findViewById(tabLayoutId);
+        fragmentAdapter = new FragmentAdapter(activity.getSupportFragmentManager());
+        viewPager.setAdapter(fragmentAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    public TabUtils (AppCompatActivity activity, ViewPager viewPager , TabLayout tabLayout){
+        this.activity = activity;
+        this.viewPager = viewPager;
+        this.tabLayout = tabLayout;
         fragmentAdapter = new FragmentAdapter(activity.getSupportFragmentManager());
         viewPager.setAdapter(fragmentAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -137,6 +156,11 @@ public class TabUtils {
         fragmentAdapter.getRowItem(index).setTitle(title);
         fragmentAdapter.notifyDataSetChanged();
         RefreshIcon();
+    }
+
+    public void setCurrentItem(int position){
+        this.position = position;
+        viewPager.setCurrentItem(position);
     }
 
 }
