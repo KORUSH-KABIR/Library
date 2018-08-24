@@ -29,6 +29,9 @@ public class DialogUtils {
     private ImageView mIcon;
     private TextView mTitle , mTextMessages;
     private Button mRight , mLeft , mCenter;
+    private int layout;
+    private boolean wrapInScrollView;
+    private boolean stateLayout = false;
 
     public DialogUtils(Context context){
         this.context = context;
@@ -57,7 +60,9 @@ public class DialogUtils {
     }
 
     public DialogUtils setCustomLayout(@LayoutRes int layout , boolean wrapInScrollView){
-        mBuilder.customView(layout , wrapInScrollView);
+        this.stateLayout = true;
+        this.layout = layout;
+        this.wrapInScrollView = wrapInScrollView;
         return this;
     }
 
@@ -182,6 +187,11 @@ public class DialogUtils {
     }
 
     public DialogUtils show(){
+        if(stateLayout){
+            mBuilder.customView(layout, wrapInScrollView);
+        }else {
+            mBuilder.customView(R.layout.dialog, false);
+        }
         mDialog = mBuilder.build();
         mDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_background));
         mDialog.show();

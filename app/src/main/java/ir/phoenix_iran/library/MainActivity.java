@@ -3,8 +3,10 @@ package ir.phoenix_iran.library;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
+import ir.aid.library.Utils.DialogUtils;
 import ir.aid.library.Utils.SharedPreferenceUtils;
 import ir.aid.library.Utils.ToastUtils;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -67,51 +69,51 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "txt: (" + s + ")", Toast.LENGTH_SHORT).show();
     }
 
-//    private void createDialog(){
-//
-//        DialogUtils dialog = new DialogUtils(this)
-//                .setCustomLayout(R.layout.activity_main , false)
-//                .setDialogBackgroundColor(getResources().getColor(R.color.colorAccent))
-//                .setImageBackgroundDrawable(R.drawable.dialog_background)
-//                .setImageBackgroundColor(getResources().getColor(R.color.colorAccent))
-//                .setImageDrawable(R.drawable.dialog_icon)
-//                .setTitleText("title")
-//                .setMessageText("message")
-//                .setModeButton(DialogUtils.MODE_1ST) // 1 Button
-//                .setModeButton(DialogUtils.MODE_2ND) // 2 Button
-//                .setButtonRight("right", new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                    }
-//                })
-//                .setButtonLeft("left", new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                    }
-//                })
-//                .setButtonCenter("center", new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                    }
-//                })
-//                .setSelectorButtonRight(R.drawable.dialog_selector_button)
-//                .setBackgroundButtonRightColor(getResources().getColor(R.color.colorAccent))
-//                .setSelectorButtonLeft(R.drawable.dialog_selector_button)
-//                .setBackgroundButtonLeftColor(getResources().getColor(R.color.colorAccent))
-//                .setSelectorButtonCenter(R.drawable.dialog_selector_button)
-//                .setBackgroundButtonCenterColor(getResources().getColor(R.color.colorAccent))
-//                .setHighlightShow(true)
-//                .autoCancel(true)
-//                .autoDismiss(true)
-//                .dismiss()
-//                .setCanceledOnTouchOutside(true);
-//
-//        dialog.show();
-//
-//    }
+    private void createDialog(){
+
+        DialogUtils dialog = new DialogUtils(this)
+                .setCustomLayout(R.layout.activity_main , false)
+                .setDialogBackgroundColor(getResources().getColor(R.color.colorAccent))
+                .setImageBackgroundDrawable(R.drawable.dialog_background)
+                .setImageBackgroundColor(getResources().getColor(R.color.colorAccent))
+                .setImageDrawable(R.drawable.dialog_icon)
+                .setTitleText("title")
+                .setMessageText("message")
+                .setModeButton(DialogUtils.MODE_1ST) // 1 Button
+                .setModeButton(DialogUtils.MODE_2ND) // 2 Button
+                .setButtonRight("right", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setButtonLeft("left", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setButtonCenter("center", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setSelectorButtonRight(R.drawable.dialog_selector_button)
+                .setBackgroundButtonRightColor(getResources().getColor(R.color.colorAccent))
+                .setSelectorButtonLeft(R.drawable.dialog_selector_button)
+                .setBackgroundButtonLeftColor(getResources().getColor(R.color.colorAccent))
+                .setSelectorButtonCenter(R.drawable.dialog_selector_button)
+                .setBackgroundButtonCenterColor(getResources().getColor(R.color.colorAccent))
+                .setHighlightShow(true)
+                .autoCancel(true)
+                .autoDismiss(true)
+                .dismiss()
+                .setCanceledOnTouchOutside(true);
+
+        dialog.show();
+
+    }
 
     @Override
     protected void attachBaseContext(Context newBase) {
