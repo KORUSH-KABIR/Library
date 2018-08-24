@@ -1,149 +1,191 @@
 package ir.aid.library.Utils;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.DialogInterface;
+import android.content.Context;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
-import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.afollestad.materialdialogs.MaterialDialog;
+
+import ir.aid.library.R;
 
 public class DialogUtils {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
-    private final Activity context;
-    private View v;
-    private AlertDialog.Builder builder;
-    private AlertDialog dialog;
-    private int background;
-    private String buttonP;
-    private String buttonNG;
-    private String buttonNE;
+    public static final int MODE_1ST = 1;
+    public static final int MODE_2ND = 2;
+    private final Context context;
+    private MaterialDialog.Builder mBuilder;
+    private MaterialDialog mDialog = null;
+    private LinearLayout mRootLayout , m1 , m2;
+    private RelativeLayout mBackgroundIcon , mBackgroundIconHighlight;
+    private ImageView mIcon;
+    private TextView mTitle , mTextMessages;
+    private Button mRight , mLeft , mCenter;
 
-    public DialogUtils(Activity context){
+    public DialogUtils(Context context){
         this.context = context;
-        createDialog(crateDialogBuilder());
+        mBuilder = new MaterialDialog.Builder(context);
+        init();
     }
 
-    private Activity getContext(){
-        return context;
+    private void init(){
+
+        mRootLayout = (LinearLayout) mDialog.findViewById(R.id.mRootLayout);
+        m1          = (LinearLayout) mDialog.findViewById(R.id.m1);
+        m2          = (LinearLayout) mDialog.findViewById(R.id.m2);
+
+        mBackgroundIconHighlight = (RelativeLayout) mDialog.findViewById(R.id.mBackgroundIconHighlight);
+        mBackgroundIcon          = (RelativeLayout) mDialog.findViewById(R.id.mBackgroundIcon);
+
+        mTitle        = (TextView) mDialog.findViewById(R.id.mTitle);
+        mTextMessages = (TextView) mDialog.findViewById(R.id.mTextMessages);
+
+        mRight  = (Button) mDialog.findViewById(R.id.mRight);
+        mLeft   = (Button) mDialog.findViewById(R.id.mLeft);
+        mCenter = (Button) mDialog.findViewById(R.id.mCenter);
+
+        mIcon = (ImageView) mDialog.findViewById(R.id.mIcon);
+
     }
 
-    private AlertDialog createDialog(AlertDialog.Builder builder){
-        dialog = builder.create();
-        return dialog;
-    }
-
-    private AlertDialog.Builder crateDialogBuilder(){
-        builder = new AlertDialog.Builder(getContext());
-        return builder ;
-    }
-
-    private LayoutInflater createInflater(){
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        return inflater;
-    }
-
-    private View addLayout(@LayoutRes int layout){
-        v = createInflater().inflate(layout, null);
-        return v;
-    }
-
-    public DialogUtils setLayout(@LayoutRes int layout){
-        builder.setView(addLayout(layout));
+    public DialogUtils setCustomLayout(@LayoutRes int layout , boolean wrapInScrollView){
+        mBuilder.customView(layout , wrapInScrollView);
         return this;
     }
 
-    public DialogUtils setBackground(@DrawableRes int background){
-        this.background = background;
+    public DialogUtils setDialogBackgroundColor(@ColorInt int color){
+        mRootLayout.setBackgroundColor(color);
         return this;
     }
 
-    public DialogUtils setTitle(String title){
-        if (!title.equals("")){
-            builder.setTitle(title);
+    public DialogUtils setImageBackgroundDrawable(@DrawableRes int background){
+        mBackgroundIcon.setBackground(context.getResources().getDrawable(background));
+        return this;
+    }
+
+    public DialogUtils setImageBackgroundColor(@ColorInt int color){
+        mBackgroundIcon.setBackgroundColor(color);
+        return this;
+    }
+
+    public DialogUtils setImageDrawable(@DrawableRes int image){
+        mIcon.setImageDrawable(context.getResources().getDrawable(image));
+        return this;
+    }
+
+    public DialogUtils setTitleText(String title){
+        mTitle.setText(title);
+        return this;
+    }
+
+    public DialogUtils setMessageText(String message){
+        mTextMessages.setText(message);
+        return this;
+    }
+
+    public DialogUtils setModeButton(int mode){
+        if(mode == DialogUtils.MODE_1ST){
+            m2.setVisibility(View.GONE);
+            m1.setVisibility(View.VISIBLE);
+        }
+        else if(mode == DialogUtils.MODE_2ND){
+            m1.setVisibility(View.GONE);
+            m2.setVisibility(View.VISIBLE);
         }
         return this;
     }
 
-    @SuppressLint("ResourceType")
-    public DialogUtils setIcon(@DrawableRes int icon){
-        if (icon > 0){
-            builder.setIcon(icon);
+    public DialogUtils setButtonRight(String text , View.OnClickListener listener){
+        mRight.setText(text);
+        mRight.setOnClickListener(listener);
+        return this;
+    }
+
+    public DialogUtils setButtonLeft(String text , View.OnClickListener listener){
+        mLeft.setText(text);
+        mLeft.setOnClickListener(listener);
+        return this;
+    }
+
+    public DialogUtils setButtonCenter(String text , View.OnClickListener listener){
+        mCenter.setText(text);
+        mCenter.setOnClickListener(listener);
+        return this;
+    }
+
+    public DialogUtils setSelectorButtonRight(@DrawableRes int selector){
+        mRight.setBackground(context.getResources().getDrawable(selector));
+        return this;
+    }
+
+    public DialogUtils setBackgroundButtonRightColor(@ColorInt int color){
+        mRight.setBackgroundColor(color);
+        return this;
+    }
+
+    public DialogUtils setSelectorButtonLeft(@DrawableRes int selector){
+        mLeft.setBackground(context.getResources().getDrawable(selector));
+        return this;
+    }
+
+    public DialogUtils setBackgroundButtonLeftColor(@ColorInt int color){
+        mRight.setBackgroundColor(color);
+        return this;
+    }
+
+    public DialogUtils setSelectorButtonCenter(@DrawableRes int selector){
+        mCenter.setBackground(context.getResources().getDrawable(selector));
+        return this;
+    }
+
+    public DialogUtils setBackgroundButtonCenterColor(@ColorInt int color){
+        mRight.setBackgroundColor(color);
+        return this;
+    }
+
+    public DialogUtils setHighlightShow(boolean show){
+        if(show){
+            mBackgroundIconHighlight.setVisibility(View.VISIBLE);
+        }
+        else {
+            mBackgroundIconHighlight.setVisibility(View.GONE);
         }
         return this;
     }
 
-    public DialogUtils setMessage(String message){
-        if (!message.equals("")){
-            builder.setMessage(message);
-        }
+    public DialogUtils autoCancel(boolean auto){
+        mBuilder.cancelable(auto);
         return this;
     }
 
-    public DialogUtils setItems(String[] array, DialogInterface.OnClickListener listener){
-        builder.setItems(array,listener);
+    public DialogUtils setCanceledOnTouchOutside(boolean canceled){
+        mBuilder.canceledOnTouchOutside(canceled);
         return this;
     }
 
-    public DialogUtils autoCancel(boolean autoCancel){
-        builder.setCancelable(autoCancel);
+    public DialogUtils autoDismiss(boolean auto){
+        mBuilder.autoDismiss(auto);
         return this;
     }
 
-    public DialogUtils positiveButton(String button){
-        this.buttonP = button;
-        return this;
-    }
-
-    public DialogUtils negativeButton(String button){
-        this.buttonNG = button;
-        return this;
-    }
-
-    public DialogUtils neutralButton(String button){
-        this.buttonNE = button;
-        return this;
-    }
-
-    public DialogUtils setOnClickPositiveListener(DialogInterface.OnClickListener listener){
-        if (!buttonP.equals("")){
-            builder.setPositiveButton(buttonP,listener);
-        }
-        return this;
-    }
-
-    public DialogUtils setOnClickNegativeListener(DialogInterface.OnClickListener listener){
-        if (!buttonNG.equals("")){
-            builder.setPositiveButton(buttonNG,listener);
-        }
-        return this;
-    }
-
-    public DialogUtils setOnClickNeutralListener(DialogInterface.OnClickListener listener){
-        if (!buttonNE.equals("")){
-            builder.setPositiveButton(buttonNE,listener);
-        }
-        return this;
-    }
-
-    public DialogUtils viewListener(View view , int id , View.OnClickListener listener){
-        view = (View) v.findViewById(id);
-        view.setOnClickListener(listener);
+    public DialogUtils dismiss(){
+        mDialog.dismiss();
         return this;
     }
 
     public DialogUtils show(){
-        dialog = builder.create();
-        if (background > 0 ){
-            dialog.getWindow()
-                    .setBackgroundDrawable(getContext()
-                            .getResources()
-                            .getDrawable(background));
-        }
-        dialog.show();
+        mDialog = mBuilder.build();
+        mDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_background));
+        mDialog.show();
         return this;
     }
+
 }

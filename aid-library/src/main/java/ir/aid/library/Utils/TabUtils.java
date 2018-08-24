@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +21,10 @@ public class TabUtils {
     private TabLayout tabLayout;
     private View view;
     private FragmentAdapter fragmentAdapter;
-    private int position;
 
+    /*
+     * use id in activity
+     */
     public TabUtils (AppCompatActivity activity , int viewPagerId , int tabLayoutId){
         this.activity = activity;
         view = activity.getWindow().getDecorView();
@@ -34,15 +35,21 @@ public class TabUtils {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    public TabUtils (AppCompatActivity activity , ViewGroup viewGroup, int viewPagerId , int tabLayoutId){
+    /*
+    * use id in fragment or super view
+    */
+    public TabUtils (AppCompatActivity activity , View view, int viewPagerId , int tabLayoutId){
         this.activity = activity;
-        viewPager = (ViewPager) viewGroup.findViewById(viewPagerId);
-        tabLayout = (TabLayout) viewGroup.findViewById(tabLayoutId);
+        viewPager = (ViewPager) view.findViewById(viewPagerId);
+        tabLayout = (TabLayout) view.findViewById(tabLayoutId);
         fragmentAdapter = new FragmentAdapter(activity.getSupportFragmentManager());
         viewPager.setAdapter(fragmentAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    /*
+     * use normal
+     */
     public TabUtils (AppCompatActivity activity, ViewPager viewPager , TabLayout tabLayout){
         this.activity = activity;
         this.viewPager = viewPager;
@@ -159,7 +166,6 @@ public class TabUtils {
     }
 
     public void setCurrentItem(int position){
-        this.position = position;
         viewPager.setCurrentItem(position);
     }
 
