@@ -28,9 +28,6 @@ public class DialogUtils {
     private ImageView mIcon;
     private TextView mTitle , mTextMessages;
     private Button mRight , mLeft , mCenter;
-    private int layout;
-    private boolean wrapInScrollView;
-    private boolean stateLayout = false;
 
     public DialogUtils(Context context){
         this.context = context;
