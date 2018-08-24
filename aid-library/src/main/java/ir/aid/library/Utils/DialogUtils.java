@@ -3,7 +3,6 @@ package ir.aid.library.Utils;
 import android.content.Context;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,6 +35,7 @@ public class DialogUtils {
     public DialogUtils(Context context){
         this.context = context;
         mBuilder = new MaterialDialog.Builder(context);
+        mBuilder.customView(R.layout.dialog, false);
         init();
     }
 
@@ -57,13 +57,6 @@ public class DialogUtils {
 
         mIcon = (ImageView) mDialog.findViewById(R.id.mIcon);
 
-    }
-
-    public DialogUtils setCustomLayout(@LayoutRes int layout , boolean wrapInScrollView){
-        this.stateLayout = true;
-        this.layout = layout;
-        this.wrapInScrollView = wrapInScrollView;
-        return this;
     }
 
     public DialogUtils setDialogBackgroundColor(@ColorInt int color){
@@ -187,11 +180,6 @@ public class DialogUtils {
     }
 
     public DialogUtils show(){
-        if(stateLayout){
-            mBuilder.customView(layout, wrapInScrollView);
-        }else {
-            mBuilder.customView(R.layout.dialog, false);
-        }
         mDialog = mBuilder.build();
         mDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_background));
         mDialog.show();
