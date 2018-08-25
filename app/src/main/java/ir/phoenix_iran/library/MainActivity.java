@@ -78,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private void createDialog(){
 
         DialogUtils dialog = new DialogUtils(this)
-                .setDialogBackgroundColor(getResources().getColor(R.color.colorAccent))
-                .setImageBackgroundDrawable(R.drawable.dialog_background)
+                .setDialogBackgroundColor(getResources().getColor(R.color.c6))
                 .setImageBackgroundColor(getResources().getColor(R.color.colorAccent))
                 .setImageDrawable(R.drawable.dialog_icon)
                 .setTitleText("title")
@@ -98,9 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .setSelectorButtonRight(R.drawable.dialog_selector_button)
-                .setBackgroundButtonRightColor(getResources().getColor(R.color.colorAccent))
                 .setSelectorButtonLeft(R.drawable.dialog_selector_button)
-                .setBackgroundButtonLeftColor(getResources().getColor(R.color.colorAccent))
                 .setHighlightShow(true)
                 .autoCancel(true)
                 .autoDismiss(true)

@@ -33,6 +33,7 @@ public class DialogUtils {
         this.context = context;
         mBuilder = new MaterialDialog.Builder(context);
         mBuilder.customView(R.layout.dialog, false);
+        mDialog = mBuilder.build();
         init();
     }
 
@@ -177,7 +178,6 @@ public class DialogUtils {
     }
 
     public DialogUtils show(){
-        mDialog = mBuilder.build();
         mDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_background));
         mDialog.show();
         return this;
