@@ -1,6 +1,5 @@
 package ir.aid.library.Utils;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -8,41 +7,41 @@ public class SharedPreferenceUtils {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
-    private static SharedPreferences preference(Activity activity , String name){
-        SharedPreferences sharedPreferences = activity.getSharedPreferences(name, Context.MODE_PRIVATE);
+    private static SharedPreferences preference(Context context, String spFileName) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(spFileName, Context.MODE_PRIVATE);
         return sharedPreferences;
     }
 
-    public static String readString(Activity activity , String name , String value , String alternative){
-        final String str = preference(activity,name).getString(value , alternative);
+    public static String readString(Context context, String spFileName, String key, String alternative) {
+        final String str = preference(context, spFileName).getString(key, alternative);
         return str;
     }
 
-    public static int readInteger(Activity activity , String name , String value , int alternative){
-        final int i = preference(activity,name).getInt(value , alternative);
-        return i;
+    public static int readInteger(Context context, String spFileName, String key, int alternative) {
+        final int integer = preference(context, spFileName).getInt(key, alternative);
+        return integer;
     }
 
-    public static boolean readBoolean(Activity activity , String name , String value , boolean alternative){
-        final boolean b = preference(activity,name).getBoolean(value , alternative);
-        return b;
+    public static boolean readBoolean(Context context, String spFileName, String key, boolean alternative) {
+        final boolean bln = preference(context, spFileName).getBoolean(key, alternative);
+        return bln;
     }
 
-    public static void writeString(Activity activity , String name , String value , String text){
-        SharedPreferences.Editor editor = preference(activity,name).edit();
-        editor.putString(value,text);
+    public static void writeString(Context context, String spFileName, String key, String text) {
+        SharedPreferences.Editor editor = preference(context, spFileName).edit();
+        editor.putString(key, text);
         editor.apply();
     }
 
-    public static void writeInteger(Activity activity , String name , String value , int i){
-        SharedPreferences.Editor editor = preference(activity,name).edit();
-        editor.putInt(value,i);
+    public static void writeInteger(Context context, String spFileName, String key, int integer) {
+        SharedPreferences.Editor editor = preference(context, spFileName).edit();
+        editor.putInt(key, integer);
         editor.apply();
     }
 
-    public static void writeBoolean(Activity activity , String name , String value , boolean bln){
-        SharedPreferences.Editor editor = preference(activity,name).edit();
-        editor.putBoolean(value,bln);
+    public static void writeBoolean(Context context, String spFileName, String key, boolean bln) {
+        SharedPreferences.Editor editor = preference(context, spFileName).edit();
+        editor.putBoolean(key, bln);
         editor.apply();
     }
 

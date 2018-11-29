@@ -18,11 +18,11 @@ public class DialogUtils {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
-    public static final int MODE_1ST = 1;
-    public static final int MODE_2ND = 2;
+    private static final int MODE_1ST = 1;
+    private static final int MODE_2ND = 2;
     private final Context context;
     private MaterialDialog.Builder mBuilder;
-    private MaterialDialog mDialog = null;
+    private MaterialDialog mDialog;
     private LinearLayout mRootLayout , m1 , m2;
     private RelativeLayout mBackgroundIcon , mBackgroundIconHighlight;
     private ImageView mIcon;
