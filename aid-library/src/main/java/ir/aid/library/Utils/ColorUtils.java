@@ -7,7 +7,6 @@ public class ColorUtils {
     private static String DEVELOPER = "محمد علی ریاضتی";
 
     public HashMap<String, String> getColor(){
-
         HashMap<String,String> data = new HashMap<String, String>();
         data.put("Alice Blue" , "#F0F8FF");
         data.put("Antique White" , "#FAEBD7");
@@ -150,7 +149,6 @@ public class ColorUtils {
         data.put("White Smoke" , "#F5F5F5");
         data.put("Yellow" , "#FFFF00");
         data.put("Yellow Green" , "#9ACD32");
-
         return data;
     }
 
