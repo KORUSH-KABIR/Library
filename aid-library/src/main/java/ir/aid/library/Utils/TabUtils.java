@@ -19,7 +19,6 @@ public class TabUtils {
     private AppCompatActivity activity;
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private View view;
     private FragmentAdapter fragmentAdapter;
 
     /*
@@ -27,7 +26,7 @@ public class TabUtils {
      */
     public TabUtils (AppCompatActivity activity , int viewPagerId , int tabLayoutId){
         this.activity = activity;
-        view = activity.getWindow().getDecorView();
+        View view = activity.getWindow().getDecorView();
         viewPager = (ViewPager) view.findViewById(viewPagerId);
         tabLayout = (TabLayout) view.findViewById(tabLayoutId);
         fragmentAdapter = new FragmentAdapter(activity.getSupportFragmentManager());
@@ -88,7 +87,7 @@ public class TabUtils {
         private String title;
         private int icon;
 
-        public Item(Class<? extends Fragment> fragmentClass , String title , int icon){
+        Item(Class<? extends Fragment> fragmentClass , String title , int icon){
             try {
                 this.fragment = fragmentClass.newInstance();
                 this.title = title;
@@ -125,7 +124,7 @@ public class TabUtils {
 
         private List<Item> items = new ArrayList<>();
 
-        public FragmentAdapter(FragmentManager fragmentManager) {
+        FragmentAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
         }
 
@@ -134,7 +133,7 @@ public class TabUtils {
             return items.get(position).getFragment();
         }
 
-        public Item getRowItem(int position){
+        Item getRowItem(int position){
             return items.get(position);
         }
 
@@ -143,7 +142,7 @@ public class TabUtils {
             return items.size();
         }
 
-        public void AddItems(Item item){
+        void AddItems(Item item){
             items.add(item);
         }
 
