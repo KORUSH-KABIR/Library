@@ -4,6 +4,8 @@ public interface ConfigLoad {
 
     void notConnection(String result);
 
-    void result(String result);
+    void success(String result);
+
+    void nullable(String result);
 
 }

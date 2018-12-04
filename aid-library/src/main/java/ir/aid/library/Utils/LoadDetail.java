@@ -8,6 +8,8 @@ import com.koushikdutta.async.http.AsyncHttpPost;
 import com.koushikdutta.async.http.AsyncHttpResponse;
 import com.koushikdutta.async.http.body.MultipartFormDataBody;
 
+import java.io.File;
+
 import ir.aid.library.Interface.ConfigLoad;
 
 /*
@@ -15,8 +17,6 @@ import ir.aid.library.Interface.ConfigLoad;
   receiving the response with Async.
  */
 public class LoadDetail {
-
-    private static String DEVELOPER = "محمد علی ریاضتی";
 
     private String configUrl;              // url php connection
     private int timeOut;                  // time out request
@@ -27,7 +27,7 @@ public class LoadDetail {
      * @param configUrl url php connection.
      * @param timeOut time out connection.
      */
-    public LoadDetail(@NonNull String configUrl , @NonNull int timeOut){
+    public LoadDetail(@NonNull String configUrl , int timeOut){
         this.timeOut = timeOut;
         this.configUrl = configUrl;
     }
@@ -40,6 +40,17 @@ public class LoadDetail {
      */
     public LoadDetail addStringRequest(String key , String value){
         body.addStringPart(key , value);
+        return this;
+    }
+
+    /**
+     * can be accessed from the outside.
+     * @param key string key for sending to the server.
+     * @param path string path file for sending to the server.
+     * @return class
+     */
+    public LoadDetail addFileRequest(String key , String path){
+        body.addFilePart(key , new File(path));
         return this;
     }
 
@@ -65,7 +76,7 @@ public class LoadDetail {
                     configLoad.notConnection("can not Connect to Server");
                 }
                 else if (!result.equals("")){
-                    configLoad.result(result); //result is JSON callback
+                    configLoad.success(result); //result is JSON callback
                 }
             }
         });
@@ -84,7 +95,7 @@ public class LoadDetail {
                 load(configLoad);
             }
         });
-        Log.i("CentralCore" , load.getName()); // search this log for start thread
+        Log.i("CentralCore" , load.getName());
         load.start();
         return this;
     }
