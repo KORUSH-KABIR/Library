@@ -18,8 +18,8 @@ public class DialogUtils {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
-    private static final int MODE_1ST = 1;
-    private static final int MODE_2ND = 2;
+    public static final int MODE_1ST = 1;
+    public static final int MODE_2ND = 2;
     private final Context context;
     private MaterialDialog.Builder mBuilder;
     private MaterialDialog mDialog;
