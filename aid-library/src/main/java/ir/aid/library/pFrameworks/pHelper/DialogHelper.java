@@ -13,6 +13,8 @@ public class DialogHelper {
 
     private final Context context;
     private MaterialDialog.Builder mBuilder;
+    private MaterialDialog mDialog;
+    private int shapeBackground = 0;
 
     public DialogHelper(Context context){
         this.context = context;
@@ -21,10 +23,6 @@ public class DialogHelper {
 
     private MaterialDialog.Builder getBuilder(){
         return mBuilder;
-    }
-
-    private MaterialDialog getDialog(){
-        return getBuilder().build();
     }
 
     public DialogHelper setCustomView(@LayoutRes int layout , boolean scrollable){
@@ -38,7 +36,7 @@ public class DialogHelper {
     }
 
     public DialogHelper setDialogBackgroundShape(@DrawableRes int shapeBackground){
-        getDialog().getWindow().setBackgroundDrawable(context.getResources().getDrawable(shapeBackground));
+        this.shapeBackground = shapeBackground;
         return this;
     }
 
@@ -86,12 +84,16 @@ public class DialogHelper {
     }
 
     public DialogHelper dismiss(){
-        getDialog().dismiss();
+        mDialog.dismiss();
         return this;
     }
 
     public void show(){
-        getDialog().show();
-    }
+        mDialog = mBuilder.build();
+        if(shapeBackground != 0){
+            mDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(shapeBackground));
+        }
+        mDialog.show();
+}
 
 }

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                 .setMessageText("message")
                 .autoCancel(true)
                 .autoDismiss(true)
-                .setDialogBackgroundShape(R.drawable.dialog_background)
+                //.setDialogBackgroundShape(R.drawable.dialog_background)
                 .setCanceledOnTouchOutside(true).show();
 
         ToastBuilder.ToastUtils.build(this , "title" , "description" , R.drawable.pic_profile , ToastBuilder.NORMAL_MODE , ToastBuilder.TIME_LONG);
