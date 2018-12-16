@@ -33,7 +33,7 @@ public class DialogHelper {
     }
 
     public DialogHelper setDialogBackgroundColor(@ColorInt int color){
-        mBuilder.backgroundColor(color);
+        getBuilder().backgroundColor(color);
         return this;
     }
 
@@ -43,17 +43,35 @@ public class DialogHelper {
     }
 
     public DialogHelper setTitleText(String title){
-        mBuilder.title(title);
+        getBuilder().title(title);
         return this;
     }
 
     public DialogHelper setMessageText(String message){
-        mBuilder.content(message);
+        getBuilder().content(message);
         return this;
     }
 
     public DialogHelper autoCancel(boolean bln){
-        mBuilder.cancelable(bln);
+        getBuilder().cancelable(bln);
+        return this;
+    }
+
+    public DialogHelper positiveButton(String text , MaterialDialog.SingleButtonCallback callback){
+        getBuilder().positiveText(text);
+        getBuilder().onPositive(callback);
+        return this;
+    }
+
+    public DialogHelper negativeButton(String text , MaterialDialog.SingleButtonCallback callback){
+        getBuilder().negativeText(text);
+        getBuilder().onNegative(callback);
+        return this;
+    }
+
+    public DialogHelper neutralButton(String text , MaterialDialog.SingleButtonCallback callback){
+        getBuilder().neutralText(text);
+        getBuilder().onNeutral(callback);
         return this;
     }
 
@@ -72,9 +90,8 @@ public class DialogHelper {
         return this;
     }
 
-    public DialogHelper show(){
+    public void show(){
         getDialog().show();
-        return this;
     }
 
 }

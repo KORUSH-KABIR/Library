@@ -54,7 +54,7 @@ public class ToastBuilder {
 //        view.setBackgroundResource(android.R.drawable.toast_frame);
 //        toast.show();
     }
-    
+
     public static class ToastUtils {
 
         //private static CardView mCardView;

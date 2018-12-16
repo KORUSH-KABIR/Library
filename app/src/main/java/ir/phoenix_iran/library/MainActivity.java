@@ -19,17 +19,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void createDialog(){
 
-        DialogHelper dialog = new DialogHelper(this)
-                .setDialogBackgroundColor(getResources().getColor(R.color.c6))
+        new DialogHelper(this)
                 .setTitleText("title")
                 .setMessageText("message")
                 .autoCancel(true)
                 .autoDismiss(true)
-                .setCanceledOnTouchOutside(true);
-        dialog.show();
+                .setDialogBackgroundShape(R.drawable.dialog_background)
+                .setCanceledOnTouchOutside(true).show();
 
         ToastBuilder.ToastUtils.build(this , "title" , "description" , R.drawable.pic_profile , ToastBuilder.NORMAL_MODE , ToastBuilder.TIME_LONG);
-        ToastBuilder.CustomToast.build(this , R.layout.toast_layout , ToastBuilder.TIME_LONG);
+        ToastBuilder.CustomToast.build(this , R.layout.toast_layout_test , ToastBuilder.TIME_LONG);
 
     }
 
