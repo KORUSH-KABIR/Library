@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 .setCanceledOnTouchOutside(true);
         dialog.show();
 
-        ToastBuilder.defaultToast.build(this , "text" , ToastBuilder.TIME_LONG);
         ToastBuilder.ToastUtils.build(this , "title" , "description" , R.drawable.pic_profile , ToastBuilder.NORMAL_MODE , ToastBuilder.TIME_LONG);
         ToastBuilder.CustomToast.build(this , R.layout.toast_layout , ToastBuilder.TIME_LONG);
 

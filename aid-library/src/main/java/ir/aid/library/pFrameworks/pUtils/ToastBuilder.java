@@ -54,25 +54,7 @@ public class ToastBuilder {
 //        view.setBackgroundResource(android.R.drawable.toast_frame);
 //        toast.show();
     }
-
-    public static class defaultToast {
-
-        public static void build(Context context , String text , @DurationToast int duration){
-
-            LayoutInflater inflate = (LayoutInflater)
-                    context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            assert inflate != null;
-            View v = inflate.inflate(com.android.internal.R.layout.transient_notification, null);
-            TextView tv = v.findViewById(com.android.internal.R.id.message);
-            tv.setText(text);
-
-            Toast result = new Toast(context);
-            result.setView(v);
-            result.setDuration(duration);
-            result.show();
-        }
-    }
-
+    
     public static class ToastUtils {
 
         //private static CardView mCardView;
