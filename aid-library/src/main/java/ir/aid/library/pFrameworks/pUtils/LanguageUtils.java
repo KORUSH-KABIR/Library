@@ -1,25 +1,27 @@
-package ir.aid.library.Utils;
+package ir.aid.library.pFrameworks.pUtils;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
 import java.util.Locale;
 
+import ir.aid.library.pInterfaces.LanguageMode;
+
 public class LanguageUtils {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    public static final String ENGLISH = "en";
+    public static final String PERSIAN = "fa";
 
-    public void changeLanguage(Resources res , String lng){
+    public static void changeLanguage(Resources res , @LanguageMode String lng){
 
-        Configuration config;
-        config = new Configuration(res.getConfiguration());
+        Configuration config = new Configuration(res.getConfiguration());
 
         switch (lng){
-            case "en":
+            case ENGLISH:
                 config.locale = new Locale("en");
                 break;
 
-            case "fa":
+            case PERSIAN:
                 config.locale = new Locale("fa");
                 break;
 
@@ -27,7 +29,6 @@ public class LanguageUtils {
                 config.locale = new Locale("fa");
                 break;
         }
-
         res.updateConfiguration(config,res.getDisplayMetrics());
     }
 }

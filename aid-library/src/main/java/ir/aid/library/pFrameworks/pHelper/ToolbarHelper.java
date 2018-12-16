@@ -1,4 +1,4 @@
-package ir.aid.library.Utils;
+package ir.aid.library.pFrameworks.pHelper;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -10,205 +10,149 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class ToolbarUtils {
+import my.top.student.pFramework.pUtils.FrameworkException;
+
+public class ToolbarHelper {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
     private final Activity activity;
-    private int[] features;
-    private boolean noTitleBar;
-    private boolean noActionBar;
-    private boolean fullscreen;
-    private int layoutId;
-    private String title;
-    private String SubTitle;
-    private Boolean home;
-    private int homeIcon;
-    private int style;
 
-    public ToolbarUtils(Activity activity){
+    public ToolbarHelper(Activity activity) {
         this.activity = activity;
     }
 
-    public ToolbarUtils requestFeatures(int... features){
-
-        this.features = features;
-
-        for (int feature: this.features){
+    public ToolbarHelper requestFeatures(int... features) {
+        for(int feature : features){
             this.activity.getWindow().requestFeature(feature);
         }
-
         return this;
     }
 
-    public ToolbarUtils noTitleBar(Boolean b){
-
-        this.noTitleBar = b;
-
-        if (noTitleBar == true){
+    public ToolbarHelper noTitleBar(Boolean bln) {
+        if(bln){
             activity.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         }
-        else {
-            ////////////
-        }
-
         return this;
     }
 
-    public ToolbarUtils noActionBar(Boolean b){
+    public ToolbarHelper noActionBar(Boolean bln) {
 
-        this.noActionBar = b;
-
-        if (noActionBar == true){
+        if(bln){
             activity.getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
             {
                 ActionBar actionBar = activity.getActionBar();
-                if (actionBar != null) {
+                if(actionBar != null){
                     actionBar.hide();
                 }
             }
 
-            if (activity instanceof AppCompatActivity) {
+            if(activity instanceof AppCompatActivity){
                 AppCompatActivity casted = (AppCompatActivity) activity;
                 android.support.v7.app.ActionBar actionBar = casted.getSupportActionBar();
-                if (actionBar != null) {
+                if(actionBar != null){
                     actionBar.hide();
                 }
             }
         }
-        else {
-            /////////////
+        return this;
+    }
+
+    public ToolbarHelper FullScreen(Boolean bln) {
+        if(bln){
+            activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-
         return this;
     }
 
-    public ToolbarUtils FullScreen(Boolean b){
-
-        this.fullscreen = b;
-
-        if (fullscreen){
-            activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
-
+    public ToolbarHelper Theme(@StyleRes int styleResID) {
+        activity.setTheme(styleResID);
         return this;
     }
 
-    public ToolbarUtils Theme(@StyleRes int styleResID){
-
-        this.style = styleResID;
-
-        activity.setTheme(style);
-
-        return this;
-    }
-
-    public ToolbarUtils Title(String t){
-
-        this.title = t;
-
-        if (title != null) {
+    public ToolbarHelper Title(String title) throws FrameworkException {
+        if(title != null){
             activity.setTitle(title);
         }
-
+        else {
+            throw new FrameworkException("title is null");
+        }
         return this;
     }
 
-    public ToolbarUtils SubTitle(String s){
-
-        this.SubTitle = s;
-
-        if (SubTitle != null) {
-
+    public ToolbarHelper SubTitle(String subTitle) throws FrameworkException {
+        if(subTitle != null){
             activity.getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
             {
                 ActionBar actionBar = activity.getActionBar();
-                if (actionBar != null) {
-                    activity.getActionBar().setSubtitle(SubTitle);                    }
-            }
-
-            if (activity instanceof AppCompatActivity) {
-                AppCompatActivity casted = (AppCompatActivity) activity;
-                android.support.v7.app.ActionBar actionBar = casted.getSupportActionBar();
-                if (actionBar != null) {
-                    ((AppCompatActivity) activity).getSupportActionBar().setSubtitle(SubTitle);
+                if(actionBar != null){
+                    activity.getActionBar().setSubtitle(subTitle);
                 }
             }
+            if(activity instanceof AppCompatActivity){
+                AppCompatActivity casted = (AppCompatActivity) activity;
+                android.support.v7.app.ActionBar actionBar = casted.getSupportActionBar();
+                if(actionBar != null){
+                    ((AppCompatActivity) activity).getSupportActionBar().setSubtitle(subTitle);
+                }
+            }
+        }else{
+            throw new FrameworkException("subTitle is null");
         }
-        else {
-            /////////////////
-        }
-
         return this;
     }
 
-    public ToolbarUtils ButtonHome(Boolean b){
+    public ToolbarHelper ButtonHome(Boolean home) throws FrameworkException {
 
-        this.home = b;
-
-        if (home != null){
-
+        if(home != null){
             try{
                 activity.getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
                 {
                     ActionBar actionBar = activity.getActionBar();
-                    if (actionBar != null) {
+                    if(actionBar != null){
                         activity.getActionBar().setDisplayHomeAsUpEnabled(true);
                     }
                 }
-            }
-            catch (Exception e){
-                if (activity instanceof AppCompatActivity) {
+            }catch(Exception e){
+                if(activity instanceof AppCompatActivity){
                     AppCompatActivity casted = (AppCompatActivity) activity;
                     android.support.v7.app.ActionBar actionBar = casted.getSupportActionBar();
-                    if (actionBar != null) {
+                    if(actionBar != null){
                         ((AppCompatActivity) activity).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                     }
                 }
             }
+        }else{
+            throw new FrameworkException("home shower boolean is null");
         }
-        else {
-            /////////////////
-        }
-
         return this;
     }
 
-    public ToolbarUtils HomeIcon(@DrawableRes int icon){
-
-        this.homeIcon = icon;
-
+    public ToolbarHelper HomeIcon(@DrawableRes int homeIcon) {
         try{
             activity.getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
             {
                 ActionBar actionBar = activity.getActionBar();
-                if (actionBar != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                if(actionBar != null){
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
                         activity.getActionBar().setHomeAsUpIndicator(homeIcon);
                     }
                 }
             }
-        }
-        catch (Exception e){
-            if (activity instanceof AppCompatActivity) {
+        }catch(Exception e){
+            if(activity instanceof AppCompatActivity){
                 AppCompatActivity casted = (AppCompatActivity) activity;
                 android.support.v7.app.ActionBar actionBar = casted.getSupportActionBar();
-                if (actionBar != null) {
+                if(actionBar != null){
                     ((AppCompatActivity) activity).getSupportActionBar().setHomeAsUpIndicator(homeIcon);
                 }
             }
         }
-
         return this;
     }
 
-    public ToolbarUtils setLayoutView(@LayoutRes int layoutResID){
-
-        this.layoutId = layoutResID;
-
-        activity.setContentView(layoutId);
-
+    public ToolbarHelper setLayoutView(@LayoutRes int layoutResID) {
+        activity.setContentView(layoutResID);
         return this;
     }
 

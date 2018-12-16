@@ -10,7 +10,7 @@ import com.koushikdutta.async.http.body.MultipartFormDataBody;
 
 import java.io.File;
 
-import ir.aid.library.Interface.ConfigLoad;
+import ir.aid.library.pInterfaces.ConfigLoad;
 
 /*
   this class is responsible for sending values to the server and

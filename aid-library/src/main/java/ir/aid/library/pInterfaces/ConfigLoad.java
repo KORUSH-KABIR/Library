@@ -1,4 +1,4 @@
-package ir.aid.library.Interface;
+package ir.aid.library.pInterfaces;
 
 public interface ConfigLoad {
 

@@ -1,4 +1,4 @@
-package ir.aid.library.Utils;
+package ir.aid.library.pFrameworks.pHelper;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,26 +10,27 @@ import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.concurrent.ExecutionException;
 
-import ir.aid.library.R;
+import my.top.student.R;
 
-public class PhotoUtils {
-
-    private static String DEVELOPER = "محمد علی ریاضتی";
+public class PhotoHelper {
 
     private static String APP_DIR;
     private final Context context;
 
-    public PhotoUtils(Context context) {
+    public PhotoHelper(Context context) {
         this.context = context;
         String SD_CARD = Environment.getExternalStorageDirectory().getAbsolutePath();
-        String BRAND_DIR = SD_CARD + "/Android/data";
-        APP_DIR = BRAND_DIR + "/" + context.getPackageName() + "/files";
+        APP_DIR = SD_CARD + "/Android/data/" + context.getPackageName() + "/files";
+    }
+
+    public PhotoHelper(Context context , String path) {
+        this.context = context;
+        APP_DIR = path;
     }
 
     public String getAppDir() {
@@ -88,13 +89,7 @@ public class PhotoUtils {
                     cache.compress(Bitmap.CompressFormat.JPEG,70,outputStream);
                     outputStream.flush();
                     outputStream.close();
-                }catch(InterruptedException e){
-                    e.printStackTrace();
-                }catch(ExecutionException e){
-                    e.printStackTrace();
-                }catch(FileNotFoundException e){
-                    e.printStackTrace();
-                }catch(IOException e){
+                }catch(InterruptedException | ExecutionException | IOException e){
                     e.printStackTrace();
                 }
             }

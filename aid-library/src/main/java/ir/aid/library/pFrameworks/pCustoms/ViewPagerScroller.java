@@ -1,12 +1,10 @@
-package ir.aid.library.Utils;
+package ir.aid.library.pFrameworks.pCustoms;
 
 import android.content.Context;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 public class ViewPagerScroller extends Scroller {
-
-    private static String DEVELOPER = "محمد علی ریاضتی";
 
     private int mScrollDuration = 800;
 

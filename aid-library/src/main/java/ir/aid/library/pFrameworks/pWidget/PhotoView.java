@@ -1,4 +1,4 @@
-package ir.aid.library.Widget;
+package ir.aid.library.pFrameworks.pWidget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -24,7 +24,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.OverScroller;
 import android.widget.Scroller;
 
-public class ImageViewUtils extends android.support.v7.widget.AppCompatImageView {
+public class PhotoView extends android.support.v7.widget.AppCompatImageView {
 
 	private static final String DEBUG = "DEBUG";
 	private static final float SUPER_MIN_MULTIPLIER = .75f;
@@ -52,17 +52,17 @@ public class ImageViewUtils extends android.support.v7.widget.AppCompatImageView
     private OnTouchListener userTouchListener = null;
     private OnTouchImageViewListener touchImageViewListener = null;
 
-    public ImageViewUtils(Context context) {
+    public PhotoView(Context context) {
         super(context);
         sharedConstructing(context);
     }
 
-    public ImageViewUtils(Context context, AttributeSet attrs) {
+    public PhotoView(Context context, AttributeSet attrs) {
         super(context, attrs);
         sharedConstructing(context);
     }
     
-    public ImageViewUtils(Context context, AttributeSet attrs, int defStyle) {
+    public PhotoView(Context context, AttributeSet attrs, int defStyle) {
     	super(context, attrs, defStyle);
     	sharedConstructing(context);
     }
@@ -289,7 +289,7 @@ public class ImageViewUtils extends android.support.v7.widget.AppCompatImageView
     	setImageMatrix(matrix);
     }
 
-    public void setZoom(ImageViewUtils img) {
+    public void setZoom(PhotoView img) {
     	PointF center = img.getScrollPosition();
     	setZoom(img.getCurrentZoom(), center.x, center.y, img.getScaleType());
     }
