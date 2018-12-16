@@ -1,6 +1,7 @@
 package ir.aid.library.pFrameworks.pUtils;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -80,7 +81,7 @@ public class ToastBuilder {
         private static TextView mDescription;
         private static TextView mTitle;
 
-        public static void build(Context context , String title , String description , @ToastMode int mode , @DurationToast int duration){
+        public static void build(Context context , String title , String description , @DrawableRes int icon , @ToastMode int mode , @DurationToast int duration){
 
             LayoutInflater inflate = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -97,6 +98,8 @@ public class ToastBuilder {
 
             mTitle.setText(title);
             mDescription.setText(description);
+            mPictureCircle.setImageDrawable(context.getResources().getDrawable(icon));
+            mPictureNormal.setImageDrawable(context.getResources().getDrawable(icon));
 
             Toast result = new Toast(context);
             result.setView(view);
