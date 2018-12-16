@@ -4,12 +4,12 @@ import android.support.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 
-import ir.aid.library.pFrameworks.pHelper.DialogHelper;
+import ir.aid.library.pFrameworks.pUtils.ToastUtils;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 @Retention(SOURCE)
-@IntDef(value = {DialogHelper.MODE_1ST , DialogHelper.MODE_2ND})
-public @interface DialogMode {
+@IntDef(value = {ToastUtils.CIRCLE_MODE , ToastUtils.NORMAL_MODE})
+public @interface ToastMode {
 
 }

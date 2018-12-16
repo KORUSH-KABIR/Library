@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import ir.aid.library.pFrameworks.pHelper.DialogHelper;
+import ir.aid.library.pFrameworks.pUtils.ToastUtils;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
                 .autoDismiss(true)
                 .setCanceledOnTouchOutside(true);
         dialog.show();
+
+        ToastUtils.makeDefaultToast("ali" , ToastUtils.TIME_LONG);
 
     }
 

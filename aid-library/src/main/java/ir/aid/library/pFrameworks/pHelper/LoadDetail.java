@@ -1,7 +1,6 @@
 package ir.aid.library.pFrameworks.pHelper;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.koushikdutta.async.http.AsyncHttpClient;
 import com.koushikdutta.async.http.AsyncHttpPost;
@@ -97,7 +96,6 @@ public class LoadDetail {
                 load(configLoad);
             }
         });
-        Log.i("CentralCore" , load.getName());
         load.start();
         return this;
     }
