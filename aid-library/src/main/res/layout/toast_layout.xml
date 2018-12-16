@@ -8,6 +8,7 @@
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/mCardView"
         android:minHeight="60dp"
         android:layout_margin="5dp"
         app:cardBackgroundColor="@color/green"
@@ -21,7 +22,8 @@
             android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
+                android:visibility="invisible"
+                android:id="@+id/mCircleImageView"
                 app:civ_fill_color="@color/c6"
                 app:civ_border_width="2dp"
                 app:civ_border_color="@color/white"
@@ -33,6 +35,42 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:id="@+id/mImageView"
+                android:padding="1dp"
+                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/pic_profile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:id="@+id/mTitle"
+                android:textSize="18sp"
+                android:padding="2dp"
+                android:layout_margin="2dp"
+                android:layout_toEndOf="@+id/mImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/mImageView" />
+
+            <TextView
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:id="@+id/mDescription"
+                android:textSize="15sp"
+                android:layout_below="@+id/mTitle"
+                android:padding="2dp"
+                android:layout_margin="2dp"
+                android:layout_toEndOf="@+id/mImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/mImageView" />
 
         </RelativeLayout>
 

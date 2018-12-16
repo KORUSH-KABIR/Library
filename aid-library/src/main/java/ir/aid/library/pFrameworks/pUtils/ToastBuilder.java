@@ -2,6 +2,7 @@ package ir.aid.library.pFrameworks.pUtils;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -73,6 +74,7 @@ public class ToastBuilder {
 
     public static class ToastUtils {
 
+        private static CardView mCardView;
         private static CircleImageView mPictureCircle;
         private static ImageView mPictureNormal;
         private static TextView mDescription;
@@ -85,10 +87,11 @@ public class ToastBuilder {
             assert inflate != null;
             View view = inflate.inflate(R.layout.toast_layout, null);
 
-            mPictureCircle = view.findViewById(R.id.picture);
-            mPictureNormal = view.findViewById(R.id.pictureImg);
-            mDescription   = view.findViewById(R.id.description);
-            mTitle         = view.findViewById(R.id.title);
+            mPictureCircle = view.findViewById(R.id.mCircleImageView);
+            mPictureNormal = view.findViewById(R.id.mImageView);
+            mDescription   = view.findViewById(R.id.mDescription);
+            mCardView      = view.findViewById(R.id.mCardView);
+            mTitle         = view.findViewById(R.id.mTitle);
 
             setMode(mode);
 
