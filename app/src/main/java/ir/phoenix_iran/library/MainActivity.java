@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import ir.aid.library.Utils.DialogUtils;
+import ir.aid.library.pFrameworks.pHelper.DialogHelper;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,13 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void createDialog(){
 
-        DialogUtils dialog = new DialogUtils(this)
+        DialogHelper dialog = new DialogHelper(this)
                 .setDialogBackgroundColor(getResources().getColor(R.color.c6))
                 .setImageBackgroundColor(getResources().getColor(R.color.colorAccent))
                 .setImageDrawable(R.drawable.dialog_icon)
                 .setTitleText("title")
                 .setMessageText("message")
-                .setModeButton(DialogUtils.MODE_2ND) // 2 Button
+                .setModeButton(DialogHelper.MODE_2ND) // 2 Button
                 .setButtonRight("right", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
