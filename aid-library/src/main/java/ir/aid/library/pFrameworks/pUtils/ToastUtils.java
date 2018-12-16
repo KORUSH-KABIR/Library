@@ -25,12 +25,6 @@ public class ToastUtils {
     public static final int NORMAL_MODE = 0;
     private static AppCompatActivity activity;
     private RelativeLayout rootLayout;
-    private CircleImageView picture;
-    private ImageView pictureImg;
-    private TextView description;
-    private TextView title;
-    private String text;
-    private String desc;
     private int pic;
     private int mode = 3;
     private int duration;
@@ -47,10 +41,10 @@ public class ToastUtils {
         rootLayout = (RelativeLayout)layoutInflater
                 .inflate(R.layout.toast_layout, (RelativeLayout)activity.findViewById(R.id.root_layout));
 
-        picture = rootLayout.findViewById(R.id.picture);
-        pictureImg = rootLayout.findViewById(R.id.pictureImg);
-        description = rootLayout.findViewById(R.id.description);
-        title = rootLayout.findViewById(R.id.title);
+        CircleImageView picture     = rootLayout.findViewById(R.id.picture);
+        ImageView       pictureImg  = rootLayout.findViewById(R.id.pictureImg);
+        TextView        description = rootLayout.findViewById(R.id.description);
+        TextView        title       = rootLayout.findViewById(R.id.title);
 
     }
 
@@ -64,18 +58,6 @@ public class ToastUtils {
         return this;
     }
 
-    public ToastUtils setTitle(String text){
-        this.text = text;
-        title.setText(text);
-        return this;
-    }
-
-    public ToastUtils setDescription(String desc){
-        this.desc = desc;
-        description.setText(desc);
-        return this;
-    }
-
     public ToastUtils setDuration(@DurationToast int duration){
         this.duration = duration;
         return this;
@@ -83,33 +65,33 @@ public class ToastUtils {
 
     public void showToast(){
 
-        if(pic <= 0){
-            picture.setVisibility(View.GONE);
-        }
-
-        if(mode < 2){
-            if(mode == NORMAL_MODE){
-                pictureImg.setVisibility(View.VISIBLE);
-                picture.setVisibility(View.GONE);
-                pictureImg.setImageDrawable(activity.getResources().getDrawable(pic));
-            }
-            else if(mode == CIRCLE_MODE){
-                picture.setVisibility(View.VISIBLE);
-                pictureImg.setVisibility(View.GONE);
-                picture.setImageDrawable(activity.getResources().getDrawable(pic));
-            }
-        }
-        else if(mode == 3) {
-            pictureImg.setVisibility(View.VISIBLE);
-            pictureImg.setImageDrawable(activity.getResources().getDrawable(pic));
-        }
-
-        Toast toast = new Toast(activity);
-        toast.setDuration(duration);
-        toast.setView(rootLayout);
-        View view = toast.getView();
-        view.setBackgroundResource(android.R.drawable.toast_frame);
-        toast.show();
+//        if(pic <= 0){
+//            picture.setVisibility(View.GONE);
+//        }
+//
+//        if(mode < 2){
+//            if(mode == NORMAL_MODE){
+//                pictureImg.setVisibility(View.VISIBLE);
+//                picture.setVisibility(View.GONE);
+//                pictureImg.setImageDrawable(activity.getResources().getDrawable(pic));
+//            }
+//            else if(mode == CIRCLE_MODE){
+//                picture.setVisibility(View.VISIBLE);
+//                pictureImg.setVisibility(View.GONE);
+//                picture.setImageDrawable(activity.getResources().getDrawable(pic));
+//            }
+//        }
+//        else if(mode == 3) {
+//            pictureImg.setVisibility(View.VISIBLE);
+//            pictureImg.setImageDrawable(activity.getResources().getDrawable(pic));
+//        }
+//
+//        Toast toast = new Toast(activity);
+//        toast.setDuration(duration);
+//        toast.setView(rootLayout);
+//        View view = toast.getView();
+//        view.setBackgroundResource(android.R.drawable.toast_frame);
+//        toast.show();
     }
 
     public static void makeDefaultToast(String text , @DurationToast int duration) {
@@ -126,6 +108,27 @@ public class ToastUtils {
         result.setDuration(duration);
         result.show();
 
+    }
+
+    public static void makeToastUtils(String title , String description , @ToastMode int mode , @DurationToast int duration) {
+
+        LayoutInflater inflate = (LayoutInflater)
+                activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflate != null;
+        View view = inflate.inflate(R.layout.toast_layout, null);
+
+        CircleImageView mPicture     = view.findViewById(R.id.picture);
+        ImageView       mPictureImg  = view.findViewById(R.id.pictureImg);
+        TextView        mDescription = view.findViewById(R.id.description);
+        TextView        mTitle       = view.findViewById(R.id.title);
+
+        mTitle.setText(title);
+        mDescription.setText(description);
+
+        Toast result = new Toast(activity);
+        result.setView(view);
+        result.setDuration(duration);
+        result.show();
     }
 
 }
