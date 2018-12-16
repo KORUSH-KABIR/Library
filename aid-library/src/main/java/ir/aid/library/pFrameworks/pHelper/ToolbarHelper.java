@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import my.top.student.pFramework.pUtils.FrameworkException;
+import ir.aid.library.pFrameworks.pUtils.FrameworkException;
 
 public class ToolbarHelper {
 
@@ -46,7 +46,6 @@ public class ToolbarHelper {
                     actionBar.hide();
                 }
             }
-
             if(activity instanceof AppCompatActivity){
                 AppCompatActivity casted = (AppCompatActivity) activity;
                 android.support.v7.app.ActionBar actionBar = casted.getSupportActionBar();

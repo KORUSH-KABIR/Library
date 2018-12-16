@@ -75,7 +75,7 @@ public class ToastBuilder {
 
     public static class ToastUtils {
 
-        private static CardView mCardView;
+        //private static CardView mCardView;
         private static CircleImageView mPictureCircle;
         private static ImageView mPictureNormal;
         private static TextView mDescription;
@@ -91,7 +91,7 @@ public class ToastBuilder {
             mPictureCircle = view.findViewById(R.id.mCircleImageView);
             mPictureNormal = view.findViewById(R.id.mImageView);
             mDescription   = view.findViewById(R.id.mDescription);
-            mCardView      = view.findViewById(R.id.mCardView);
+            CardView mCardView      = view.findViewById(R.id.mCardView);
             mTitle         = view.findViewById(R.id.mTitle);
 
             setMode(mode);
@@ -131,6 +131,7 @@ public class ToastBuilder {
 
             LayoutInflater inflate = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
             assert inflate != null;
             View view = inflate.inflate(layout, null);
 
