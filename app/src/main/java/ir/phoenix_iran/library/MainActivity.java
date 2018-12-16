@@ -1,12 +1,10 @@
 package ir.phoenix_iran.library;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import ir.aid.library.pFrameworks.pHelper.DialogHelper;
-import ir.aid.library.pFrameworks.pUtils.ToastUtils;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import ir.aid.library.pFrameworks.pUtils.ToastBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,13 +28,10 @@ public class MainActivity extends AppCompatActivity {
                 .setCanceledOnTouchOutside(true);
         dialog.show();
 
-        ToastUtils.makeDefaultToast("ali" , ToastUtils.TIME_LONG);
+        ToastBuilder.defaultToast.build(this , "text" , ToastBuilder.TIME_LONG);
+        ToastBuilder.ToastUtils.build(this , "title" , "description" , ToastBuilder.NORMAL_MODE , ToastBuilder.TIME_LONG);
+        ToastBuilder.CustomToast.build(this , R.layout.toast_layout , ToastBuilder.TIME_LONG);
 
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override
