@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.concurrent.ExecutionException;
 
-import my.top.student.R;
+import ir.aid.library.R;
 
 public class PhotoHelper {
 
