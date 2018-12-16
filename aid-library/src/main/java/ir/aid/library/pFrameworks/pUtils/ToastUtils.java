@@ -112,14 +112,14 @@ public class ToastUtils {
         toast.show();
     }
 
-    public static void makeDefaultToast(String desc , @DurationToast int duration) {
-        
+    public static void makeDefaultToast(String text , @DurationToast int duration) {
+
         LayoutInflater inflate = (LayoutInflater)
                 activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflate != null;
         View v = inflate.inflate(com.android.internal.R.layout.transient_notification, null);
         TextView tv = v.findViewById(com.android.internal.R.id.message);
-        tv.setText(desc);
+        tv.setText(text);
 
         Toast result = new Toast(activity);
         result.setView(v);
