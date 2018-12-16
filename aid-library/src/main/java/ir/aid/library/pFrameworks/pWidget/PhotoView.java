@@ -26,6 +26,8 @@ import android.widget.Scroller;
 
 public class PhotoView extends android.support.v7.widget.AppCompatImageView {
 
+    private static String DEVELOPER = "محمد علی ریاضتی";
+
 	private static final String DEBUG = "DEBUG";
 	private static final float SUPER_MIN_MULTIPLIER = .75f;
 	private static final float SUPER_MAX_MULTIPLIER = 1.25f;

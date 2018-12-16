@@ -2,6 +2,8 @@ package ir.aid.library.pFrameworks.pUtils;
 
 public class FrameworkException extends Exception {
 
+    private static String DEVELOPER = "محمد علی ریاضتی";
+
     public FrameworkException() {
         super();
     }

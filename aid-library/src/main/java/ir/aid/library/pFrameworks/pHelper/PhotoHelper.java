@@ -19,6 +19,8 @@ import ir.aid.library.R;
 
 public class PhotoHelper {
 
+    private static String DEVELOPER = "محمد علی ریاضتی";
+
     private static String APP_DIR;
     private final Context context;
 

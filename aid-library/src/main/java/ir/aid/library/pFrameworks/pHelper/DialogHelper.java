@@ -1,4 +1,4 @@
-package ir.aid.library.Utils;
+package ir.aid.library.pFrameworks.pHelper;
 
 import android.content.Context;
 import android.support.annotation.ColorInt;
@@ -14,7 +14,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import ir.aid.library.R;
 
-public class DialogUtils {
+public class DialogHelper {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
@@ -29,7 +29,7 @@ public class DialogUtils {
     private TextView mTitle , mTextMessages;
     private Button mRight , mLeft , mCenter;
 
-    public DialogUtils(Context context){
+    public DialogHelper(Context context){
         this.context = context;
         mBuilder = new MaterialDialog.Builder(context);
         mBuilder.customView(R.layout.dialog, false);
@@ -57,97 +57,97 @@ public class DialogUtils {
 
     }
 
-    public DialogUtils setDialogBackgroundColor(@ColorInt int color){
+    public DialogHelper setDialogBackgroundColor(@ColorInt int color){
         mRootLayout.setBackgroundColor(color);
         return this;
     }
 
-    public DialogUtils setImageBackgroundDrawable(@DrawableRes int background){
+    public DialogHelper setImageBackgroundDrawable(@DrawableRes int background){
         mBackgroundIcon.setBackground(context.getResources().getDrawable(background));
         return this;
     }
 
-    public DialogUtils setImageBackgroundColor(@ColorInt int color){
+    public DialogHelper setImageBackgroundColor(@ColorInt int color){
         mBackgroundIcon.setBackgroundColor(color);
         return this;
     }
 
-    public DialogUtils setImageDrawable(@DrawableRes int image){
+    public DialogHelper setImageDrawable(@DrawableRes int image){
         mIcon.setImageDrawable(context.getResources().getDrawable(image));
         return this;
     }
 
-    public DialogUtils setTitleText(String title){
+    public DialogHelper setTitleText(String title){
         mTitle.setText(title);
         return this;
     }
 
-    public DialogUtils setMessageText(String message){
+    public DialogHelper setMessageText(String message){
         mTextMessages.setText(message);
         return this;
     }
 
-    public DialogUtils setModeButton(int mode){
-        if(mode == DialogUtils.MODE_1ST){
+    public DialogHelper setModeButton(int mode){
+        if(mode == DialogHelper.MODE_1ST){
             m2.setVisibility(View.GONE);
             m1.setVisibility(View.VISIBLE);
         }
-        else if(mode == DialogUtils.MODE_2ND){
+        else if(mode == DialogHelper.MODE_2ND){
             m1.setVisibility(View.GONE);
             m2.setVisibility(View.VISIBLE);
         }
         return this;
     }
 
-    public DialogUtils setButtonRight(String text , View.OnClickListener listener){
+    public DialogHelper setButtonRight(String text , View.OnClickListener listener){
         mRight.setText(text);
         mRight.setOnClickListener(listener);
         return this;
     }
 
-    public DialogUtils setButtonLeft(String text , View.OnClickListener listener){
+    public DialogHelper setButtonLeft(String text , View.OnClickListener listener){
         mLeft.setText(text);
         mLeft.setOnClickListener(listener);
         return this;
     }
 
-    public DialogUtils setButtonCenter(String text , View.OnClickListener listener){
+    public DialogHelper setButtonCenter(String text , View.OnClickListener listener){
         mCenter.setText(text);
         mCenter.setOnClickListener(listener);
         return this;
     }
 
-    public DialogUtils setSelectorButtonRight(@DrawableRes int selector){
+    public DialogHelper setSelectorButtonRight(@DrawableRes int selector){
         mRight.setBackground(context.getResources().getDrawable(selector));
         return this;
     }
 
-    public DialogUtils setBackgroundButtonRightColor(@ColorInt int color){
+    public DialogHelper setBackgroundButtonRightColor(@ColorInt int color){
         mRight.setBackgroundColor(color);
         return this;
     }
 
-    public DialogUtils setSelectorButtonLeft(@DrawableRes int selector){
+    public DialogHelper setSelectorButtonLeft(@DrawableRes int selector){
         mLeft.setBackground(context.getResources().getDrawable(selector));
         return this;
     }
 
-    public DialogUtils setBackgroundButtonLeftColor(@ColorInt int color){
+    public DialogHelper setBackgroundButtonLeftColor(@ColorInt int color){
         mRight.setBackgroundColor(color);
         return this;
     }
 
-    public DialogUtils setSelectorButtonCenter(@DrawableRes int selector){
+    public DialogHelper setSelectorButtonCenter(@DrawableRes int selector){
         mCenter.setBackground(context.getResources().getDrawable(selector));
         return this;
     }
 
-    public DialogUtils setBackgroundButtonCenterColor(@ColorInt int color){
+    public DialogHelper setBackgroundButtonCenterColor(@ColorInt int color){
         mRight.setBackgroundColor(color);
         return this;
     }
 
-    public DialogUtils setHighlightShow(boolean show){
+    public DialogHelper setHighlightShow(boolean show){
         if(show){
             mBackgroundIconHighlight.setVisibility(View.VISIBLE);
         }
@@ -157,27 +157,27 @@ public class DialogUtils {
         return this;
     }
 
-    public DialogUtils autoCancel(boolean auto){
+    public DialogHelper autoCancel(boolean auto){
         mBuilder.cancelable(auto);
         return this;
     }
 
-    public DialogUtils setCanceledOnTouchOutside(boolean canceled){
+    public DialogHelper setCanceledOnTouchOutside(boolean canceled){
         mBuilder.canceledOnTouchOutside(canceled);
         return this;
     }
 
-    public DialogUtils autoDismiss(boolean auto){
+    public DialogHelper autoDismiss(boolean auto){
         mBuilder.autoDismiss(auto);
         return this;
     }
 
-    public DialogUtils dismiss(){
+    public DialogHelper dismiss(){
         mDialog.dismiss();
         return this;
     }
 
-    public DialogUtils show(){
+    public DialogHelper show(){
         mDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_background));
         mDialog.show();
         return this;

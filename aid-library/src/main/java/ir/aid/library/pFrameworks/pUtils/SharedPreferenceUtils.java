@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 public class SharedPreferenceUtils {
 
+    private static String DEVELOPER = "محمد علی ریاضتی";
+
     private Context context;
 
     public SharedPreferenceUtils(Context context) {

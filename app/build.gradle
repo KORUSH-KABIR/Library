@@ -20,7 +20,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:27.0.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
     //implementation 'com.github.KORUSH-KABIR:Library:1.1.3'
     implementation project(':aid-library')

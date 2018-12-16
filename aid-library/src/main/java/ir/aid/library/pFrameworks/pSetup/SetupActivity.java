@@ -10,6 +10,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class SetupActivity extends AppCompatActivity {
 
+    private static String DEVELOPER = "محمد علی ریاضتی";
+
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
