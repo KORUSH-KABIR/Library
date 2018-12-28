@@ -75,7 +75,7 @@ public class IntroDesignHelper {
         private int layout;
         private int lengthCount;
         private OnViewPagerItems viewPagerItems;
-        private View view;
+        private View view = null;
 
         private IntroAdapter(Context context) {
             this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -111,7 +111,9 @@ public class IntroDesignHelper {
                 view = layoutInflater.inflate(layout, container, false);
             }
 
-            viewPagerItems.items(view , position);
+            if(viewPagerItems != null){
+                viewPagerItems.items(view , position);
+            }
 
             container.addView(view);
             return view;
