@@ -58,6 +58,10 @@ public class IntroDesignHelper {
         return adapter.getCountAdapter();
     }
 
+    public View getView(){
+        return adapter.getView();
+    }
+
     public void showIntroDesign(){
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(listener);
@@ -71,6 +75,7 @@ public class IntroDesignHelper {
         private int layout;
         private int lengthCount;
         private OnViewPagerItems viewPagerItems;
+        private View view;
 
         private IntroAdapter(Context context) {
             this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -99,8 +104,6 @@ public class IntroDesignHelper {
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-            View view;
-
             if(mode){
                 view = layoutInflater.inflate(layouts[position], container, false);
             }
@@ -111,6 +114,10 @@ public class IntroDesignHelper {
             viewPagerItems.items(view , position);
 
             container.addView(view);
+            return view;
+        }
+
+        private View getView(){
             return view;
         }
 

@@ -3,7 +3,6 @@ package ir.phoenix_iran.library;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import ir.aid.library.pFrameworks.pHelper.DialogHelper;
 import ir.aid.library.pFrameworks.pUtils.ToastBuilder;
 
 public class MainActivity extends AppCompatActivity {
