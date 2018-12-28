@@ -1,6 +1,6 @@
 package ir.aid.library.pInterfaces;
 
-public interface ConfigLoad {
+public interface OnGetResponse {
 
     void notConnection(String result);
 

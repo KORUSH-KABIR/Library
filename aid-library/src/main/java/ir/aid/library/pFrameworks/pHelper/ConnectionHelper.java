@@ -9,13 +9,13 @@ import com.koushikdutta.async.http.body.MultipartFormDataBody;
 
 import java.io.File;
 
-import ir.aid.library.pInterfaces.ConfigLoad;
+import ir.aid.library.pInterfaces.OnGetResponse;
 
 /*
   this class is responsible for sending values to the server and
   receiving the response with Async.
  */
-public class LoadDetail {
+public class ConnectionHelper {
 
     private static String DEVELOPER = "محمد علی ریاضتی";
 
@@ -28,7 +28,7 @@ public class LoadDetail {
      * @param configUrl url php connection.
      * @param timeOut time out connection.
      */
-    public LoadDetail(@NonNull String configUrl , int timeOut){
+    public ConnectionHelper(@NonNull String configUrl , int timeOut){
         this.timeOut = timeOut;
         this.configUrl = configUrl;
     }
@@ -39,7 +39,7 @@ public class LoadDetail {
      * @param value string value for sending to the server.
      * @return class
      */
-    public LoadDetail addStringRequest(String key , String value){
+    public ConnectionHelper addStringRequest(String key , String value){
         body.addStringPart(key , value);
         return this;
     }
@@ -50,7 +50,7 @@ public class LoadDetail {
      * @param path string path file for sending to the server.
      * @return class
      */
-    public LoadDetail addFileRequest(String key , String path){
+    public ConnectionHelper addFileRequest(String key , String path){
         body.addFilePart(key , new File(path));
         return this;
     }
@@ -58,9 +58,9 @@ public class LoadDetail {
     /**
      * can not be accessed from the outside.
      * sending request to the server.
-     * @param configLoad interface for get callback.
+     * @param onGetResponse interface for get callback.
      */
-    private void load(final ConfigLoad configLoad){
+    private void load(final OnGetResponse onGetResponse){
 
         AsyncHttpPost post = new AsyncHttpPost(configUrl);
 
@@ -74,10 +74,10 @@ public class LoadDetail {
 
                 if (e != null){
                     e.printStackTrace();
-                    configLoad.notConnection("can not Connect to Server");
+                    onGetResponse.notConnection("can not Connect to Server");
                 }
                 else if (!result.equals("")){
-                    configLoad.success(result); //result is JSON callback
+                    onGetResponse.success(result); //result is JSON callback
                 }
             }
         });
@@ -85,15 +85,15 @@ public class LoadDetail {
 
     /**
      * can be accessed from the outside.
-     * @param configLoad interface callback.
+     * @param onGetResponse interface callback.
      * @return class.
      */
-    public LoadDetail getResult(final ConfigLoad configLoad){
+    public ConnectionHelper getResponse(final OnGetResponse onGetResponse){
 
         Thread load = new Thread(new Runnable() {
             @Override
             public void run() {
-                load(configLoad);
+                load(onGetResponse);
             }
         });
         load.start();
