@@ -3,6 +3,7 @@ package ir.phoenix_iran.library;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import ir.aid.library.pFrameworks.pHelper.IntroDesignHelper;
 import ir.aid.library.pFrameworks.pUtils.ToastBuilder;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,19 +13,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createDialog();
+        create();
 
     }
 
-    private void createDialog(){
+    private void create(){
 
-        new DialogHelper(this)
-                .setTitleText("title")
-                .setMessageText("message")
-                .autoCancel(true)
-                .autoDismiss(true)
-                //.setDialogBackgroundShape(R.drawable.dialog_background)
-                .setCanceledOnTouchOutside(true).show();
+        IntroDesignHelper intro = new IntroDesignHelper(this , R.id.viewPager);
+        intro.setItemsMode(R.layout.intro_model , 3);
+
+        intro.showIntroDesign();
+
 
         ToastBuilder.ToastUtils.build(this , "title" , "description" , R.drawable.pic_profile , ToastBuilder.NORMAL_MODE , ToastBuilder.TIME_LONG);
         ToastBuilder.CustomToast.build(this , R.layout.toast_layout_test , ToastBuilder.TIME_LONG);
