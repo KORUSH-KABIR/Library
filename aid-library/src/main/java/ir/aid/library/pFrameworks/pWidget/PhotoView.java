@@ -14,6 +14,7 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -24,16 +25,16 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.OverScroller;
 import android.widget.Scroller;
 
-public class PhotoView extends android.support.v7.widget.AppCompatImageView {
+public class PhotoView extends AppCompatImageView {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
 	private static final String DEBUG = "DEBUG";
 	private static final float SUPER_MIN_MULTIPLIER = .75f;
 	private static final float SUPER_MAX_MULTIPLIER = 1.25f;
     private float normalizedScale;
 	private Matrix matrix, prevMatrix;
-    private static enum State { NONE, DRAG, ZOOM, FLING, ANIMATE_ZOOM };
+    private enum State { NONE, DRAG, ZOOM, FLING, ANIMATE_ZOOM };
     private State state;
     private float minScale;
     private float maxScale;

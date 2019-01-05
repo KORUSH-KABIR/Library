@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 public class IntroDesignHelper {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     private ViewPager viewPager;
     private IntroAdapter adapter;

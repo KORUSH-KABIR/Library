@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class ColorUtils {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     public HashMap<String, String> getColor(){
         HashMap<String,String> data = new HashMap<String, String>();

@@ -6,7 +6,7 @@ import android.widget.Scroller;
 
 public class ViewPagerScroller extends Scroller {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     private int mScrollDuration = 800;
 

@@ -17,7 +17,7 @@ import ir.aid.library.pInterfaces.OnGetResponse;
  */
 public class ConnectionHelper {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     private String configUrl;              // url php connection
     private int timeOut;                  // time out request

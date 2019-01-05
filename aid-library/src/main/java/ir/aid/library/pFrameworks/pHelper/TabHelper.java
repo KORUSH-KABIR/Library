@@ -14,7 +14,7 @@ import java.util.List;
 
 public class TabHelper {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     private ViewPager viewPager;
     private TabLayout tabLayout;

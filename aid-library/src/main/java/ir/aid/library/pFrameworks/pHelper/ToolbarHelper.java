@@ -14,7 +14,7 @@ import ir.aid.library.pFrameworks.pUtils.FrameworkException;
 
 public class ToolbarHelper {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     private final Activity activity;
 

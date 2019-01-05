@@ -9,7 +9,7 @@ import ir.aid.library.pInterfaces.LanguageMode;
 
 public class LanguageUtils {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     public static final String ENGLISH = "en";
     public static final String PERSIAN = "fa";

@@ -2,11 +2,7 @@ package ir.aid.library.pFrameworks.pUtils;
 
 public class FrameworkException extends Exception {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
-
-    public FrameworkException() {
-        super();
-    }
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     public FrameworkException(String message) {
         super(message);
@@ -14,10 +10,6 @@ public class FrameworkException extends Exception {
 
     public FrameworkException(String message, Throwable cause) {
         super(message, cause);
-    }
-
-    public FrameworkException(Throwable cause) {
-        super(cause);
     }
 
 }

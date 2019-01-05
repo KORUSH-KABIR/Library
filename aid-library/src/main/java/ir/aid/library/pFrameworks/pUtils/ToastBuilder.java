@@ -17,7 +17,7 @@ import ir.aid.library.pInterfaces.ToastMode;
 
 public class ToastBuilder {
 
-    private static String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "محمد علی ریاضتی";
 
     public static final int TIME_LONG  = 1;
     public static final int TIME_SHORT = 0;

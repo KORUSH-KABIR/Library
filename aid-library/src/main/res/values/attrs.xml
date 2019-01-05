@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="CustomImageView">
+        <attr name="cimDefaultColor" format="color"/>
+        <attr name="cimFirstColor" format="color"/>
+        <attr name="cimSecondColor" format="color"/>
+        <attr name="cimTimeChangeColor" format="integer"/>
+        <attr name="cimStartAutoChange" format="boolean"/>
+    </declare-styleable>
+    
+</resources>
