@@ -1,6 +1,6 @@
 package ir.aid.library.pFrameworks.pUtils;
 
-public class FrameworkException extends Exception {
+public class FrameworkException extends Throwable {
 
     private static final String DEVELOPER = "محمد علی ریاضتی";
 

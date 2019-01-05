@@ -8,7 +8,7 @@ public class ToastBuilder {
     public static final int TIME_SHORT = 0;
     public static final int CIRCLE_MODE = 1;
     public static final int NORMAL_MODE = 0;
-//
+
 //    public void showToast(){
 //
 ////        if(pic <= 0){
