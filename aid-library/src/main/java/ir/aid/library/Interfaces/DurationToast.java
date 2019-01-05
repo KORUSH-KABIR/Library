@@ -1,10 +1,10 @@
-package ir.aid.library.pInterfaces;
+package ir.aid.library.Interfaces;
 
 import android.support.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 
-import ir.aid.library.pFrameworks.pUtils.ToastBuilder;
+import ir.aid.library.Frameworks.utils.ToastBuilder;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 

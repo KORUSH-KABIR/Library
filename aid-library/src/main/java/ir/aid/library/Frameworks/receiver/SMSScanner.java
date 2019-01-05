@@ -1,4 +1,4 @@
-package ir.aid.library.pFrameworks.pReceiver;
+package ir.aid.library.Frameworks.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

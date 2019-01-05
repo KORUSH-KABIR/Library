@@ -1,4 +1,4 @@
-package ir.aid.library.pFrameworks.pWidget;
+package ir.aid.library.Frameworks.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

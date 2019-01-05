@@ -1,4 +1,4 @@
-package ir.aid.library.pInterfaces;
+package ir.aid.library.Interfaces;
 
 public interface OnGetResponse {
 

@@ -1,4 +1,4 @@
-package ir.aid.library.pFrameworks.pSetup;
+package ir.aid.library.Frameworks.setup;
 
 import android.content.Context;
 import android.os.Build;

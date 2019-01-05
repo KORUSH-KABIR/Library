@@ -1,11 +1,11 @@
-package ir.aid.library.pFrameworks.pUtils;
+package ir.aid.library.Frameworks.utils;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
 import java.util.Locale;
 
-import ir.aid.library.pInterfaces.LanguageMode;
+import ir.aid.library.Interfaces.LanguageMode;
 
 public class LanguageUtils {
 

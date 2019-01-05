@@ -1,4 +1,4 @@
-package ir.aid.library.pFrameworks.pHelper;
+package ir.aid.library.Frameworks.helper;
 
 import android.support.annotation.NonNull;
 
@@ -9,7 +9,7 @@ import com.koushikdutta.async.http.body.MultipartFormDataBody;
 
 import java.io.File;
 
-import ir.aid.library.pInterfaces.OnGetResponse;
+import ir.aid.library.Interfaces.OnGetResponse;
 
 /*
   this class is responsible for sending values to the server and

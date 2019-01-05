@@ -1,4 +1,4 @@
-package ir.aid.library.pFrameworks.pCustoms;
+package ir.aid.library.Frameworks.custom;
 
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;

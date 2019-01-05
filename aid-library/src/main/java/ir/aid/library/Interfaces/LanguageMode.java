@@ -1,10 +1,10 @@
-package ir.aid.library.pInterfaces;
+package ir.aid.library.Interfaces;
 
 import android.support.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 
-import ir.aid.library.pFrameworks.pUtils.LanguageUtils;
+import ir.aid.library.Frameworks.utils.LanguageUtils;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
