@@ -78,3 +78,17 @@ Add it in your root build.gradle at the end of repositories:
                     }
                 });
 
+
+//////////////////////////////////////////////////////////////////////////////
+	
+	
+# Sample TabHelper Class:
+
+        TabHelper tabHelper = new TabHelper(this , R.id.viewPager , R.id.tabLayout);
+        TabHelper tabHelper = new TabHelper(this , view , R.id.viewPager , R.id.tabLayout); // find widget in view
+        TabHelper tabHelper = new TabHelper(this , viewPager , tabLayout);
+
+        tabHelper.add(Fragment.class , R.drawable.icon , "text");
+        tabHelper.add(Fragment.class , R.drawable.icon);
+        tabHelper.add(Fragment.class , "text");
+
