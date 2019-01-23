@@ -60,7 +60,7 @@ public class ConnectionHelper {
      * sending request to the server.
      * @param onGetResponse interface for get callback.
      */
-    private void load(final OnGetResponse onGetResponse){
+    private void load(final OnGetResponse onGetResponse) {
 
         AsyncHttpPost post = new AsyncHttpPost(configUrl);
 
@@ -70,14 +70,17 @@ public class ConnectionHelper {
 
         AsyncHttpClient.getDefaultInstance().executeString(post, new AsyncHttpClient.StringCallback() {
             @Override
-            public void onCompleted(final Exception e, AsyncHttpResponse source, final String result) {
+            public void onCompleted(Exception e, AsyncHttpResponse source, String result) {
 
                 if (e != null){
                     e.printStackTrace();
-                    onGetResponse.notConnection("can not Connect to Server");
+                    onGetResponse.notConnectToServer();
+                }
+                else if (result.equals("null")){
+                    onGetResponse.onNullResponse(); //result is Null
                 }
                 else if (!result.equals("")){
-                    onGetResponse.success(result); //result is JSON callback
+                    onGetResponse.onSuccessResponse(result); //result is JSON callback
                 }
             }
         });
@@ -90,13 +93,12 @@ public class ConnectionHelper {
      */
     public ConnectionHelper getResponse(final OnGetResponse onGetResponse){
 
-        Thread load = new Thread(new Runnable() {
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 load(onGetResponse);
             }
-        });
-        load.start();
+        }).start();
         return this;
     }
 

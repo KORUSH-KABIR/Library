@@ -27,7 +27,7 @@ public class PhotoHelper {
     public PhotoHelper(Context context) {
         this.context = context;
         String SD_CARD = Environment.getExternalStorageDirectory().getAbsolutePath();
-        APP_DIR = SD_CARD + "/Android/data/" + context.getPackageName() + "/files";
+        APP_DIR = SD_CARD + "/Android/data/" + context.getPackageName() + "/";
     }
 
     public PhotoHelper(Context context , String path) {
@@ -75,7 +75,7 @@ public class PhotoHelper {
                 .into(imageView);
     }
 
-    public void savePhotoFromUrlToAppDir(final String path , final String url , final String fileName){
+    public void savePhotoFromUrlToAppDir(final String path , final String url , final String fileName , final int quality){
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -86,9 +86,9 @@ public class PhotoHelper {
                             .asBitmap()
                             .into(280 , 280)
                             .get();
-                    File file = new File(path , "/" + fileName);
+                    File file = new File(path , fileName);
                     OutputStream outputStream = new FileOutputStream(file);
-                    cache.compress(Bitmap.CompressFormat.JPEG,70,outputStream);
+                    cache.compress(Bitmap.CompressFormat.JPEG,quality,outputStream);
                     outputStream.flush();
                     outputStream.close();
                 }catch(InterruptedException | ExecutionException | IOException e){

@@ -25,8 +25,8 @@ public class TabHelper {
      */
     public TabHelper(AppCompatActivity activity, int viewPagerId, int tabLayoutId) {
         View view = activity.getWindow().getDecorView();
-        viewPager = (ViewPager) view.findViewById(viewPagerId);
-        tabLayout = (TabLayout) view.findViewById(tabLayoutId);
+        viewPager = view.findViewById(viewPagerId);
+        tabLayout = view.findViewById(tabLayoutId);
         fragmentAdapter = new FragmentAdapter(activity.getSupportFragmentManager());
         viewPager.setAdapter(fragmentAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -36,8 +36,8 @@ public class TabHelper {
      * use id in fragment or super view
      */
     public TabHelper(AppCompatActivity activity, View view, int viewPagerId, int tabLayoutId) {
-        viewPager = (ViewPager) view.findViewById(viewPagerId);
-        tabLayout = (TabLayout) view.findViewById(tabLayoutId);
+        viewPager = view.findViewById(viewPagerId);
+        tabLayout = view.findViewById(tabLayoutId);
         fragmentAdapter = new FragmentAdapter(activity.getSupportFragmentManager());
         viewPager.setAdapter(fragmentAdapter);
         tabLayout.setupWithViewPager(viewPager);

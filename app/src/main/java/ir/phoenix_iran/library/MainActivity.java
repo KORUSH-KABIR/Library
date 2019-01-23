@@ -2,7 +2,6 @@ package ir.phoenix_iran.library;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import ir.aid.library.Frameworks.utils.SharedPreferenceUtils;
 
@@ -21,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferenceUtils utils = new SharedPreferenceUtils(this);
         utils.writeString("name" , "mohammad");
-
-        Toast.makeText(this, utils.readString("name" , ""), Toast.LENGTH_SHORT).show();
 
     }
 
