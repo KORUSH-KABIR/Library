@@ -28,7 +28,7 @@ public class LanguageUtils {
                 break;
 
             default:
-                config.locale = new Locale("fa");
+                config.locale = new Locale("en");
                 break;
         }
         res.updateConfiguration(config,res.getDisplayMetrics());
