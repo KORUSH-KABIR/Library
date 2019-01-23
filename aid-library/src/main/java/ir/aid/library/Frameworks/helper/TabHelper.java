@@ -49,7 +49,7 @@ public class TabHelper {
         Item item = new Item(fragmentClass, title, icon);
         fragmentAdapter.AddItems(item);
         fragmentAdapter.notifyDataSetChanged();
-        RefreshIcon();
+        refreshIcon();
     }
 
     public void add(Class<? extends Fragment> fragmentClass, int icon) {
@@ -60,7 +60,7 @@ public class TabHelper {
         add(fragmentClass, title, 0);
     }
 
-    private void RefreshIcon() {
+    private void refreshIcon() {
         for(int i = 0; i < fragmentAdapter.getCount(); i++){
             int itemIcon = fragmentAdapter.getRowItem(i).getIcon();
             if(itemIcon != 0){
@@ -142,13 +142,13 @@ public class TabHelper {
 
     public void setIcon(int index, int icon) {
         fragmentAdapter.getRowItem(index).setIcon(icon);
-        RefreshIcon();
+        refreshIcon();
     }
 
     public void setTitle(int index, String title) {
         fragmentAdapter.getRowItem(index).setTitle(title);
         fragmentAdapter.notifyDataSetChanged();
-        RefreshIcon();
+        refreshIcon();
     }
 
     public void setCurrentItem(int position) {
