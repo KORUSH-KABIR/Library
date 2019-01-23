@@ -20,9 +20,6 @@ public class TabHelper {
     private TabLayout tabLayout;
     private FragmentAdapter fragmentAdapter;
 
-    /*
-     * use id in activity
-     */
     public TabHelper(AppCompatActivity activity, int viewPagerId, int tabLayoutId) {
         View view = activity.getWindow().getDecorView();
         viewPager = view.findViewById(viewPagerId);
@@ -32,9 +29,6 @@ public class TabHelper {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    /*
-     * use id in fragment or super view
-     */
     public TabHelper(AppCompatActivity activity, View view, int viewPagerId, int tabLayoutId) {
         viewPager = view.findViewById(viewPagerId);
         tabLayout = view.findViewById(tabLayoutId);
@@ -43,9 +37,6 @@ public class TabHelper {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    /*
-     * use normal
-     */
     public TabHelper(AppCompatActivity activity, ViewPager viewPager, TabLayout tabLayout) {
         this.viewPager = viewPager;
         this.tabLayout = tabLayout;
