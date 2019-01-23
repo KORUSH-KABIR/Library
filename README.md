@@ -23,7 +23,7 @@ Add it in your root build.gradle at the end of repositories:
 //////////////////////////////////////////////////////////////////////////////
 
 
-# Sample SharedPreferenceUtils Class:
+# 1. Sample SharedPreferenceUtils Class:
 
         SharedPreferenceUtils utils = new SharedPreferenceUtils(this);
         utils.writeString  ("key" , "text" );
@@ -36,7 +36,7 @@ Add it in your root build.gradle at the end of repositories:
 //////////////////////////////////////////////////////////////////////////////
 	
 	
-# Sample ConnectionHelper Class:
+# 2. Sample ConnectionHelper Class:
 
         String url = "https://...";
         int timeOut = 5000;
@@ -82,7 +82,7 @@ Add it in your root build.gradle at the end of repositories:
 //////////////////////////////////////////////////////////////////////////////
 	
 	
-# Sample TabHelper Class:
+# 3. Sample TabHelper Class:
 
         TabHelper tabHelper = new TabHelper(this , R.id.viewPager , R.id.tabLayout);
         TabHelper tabHelper = new TabHelper(this , view , R.id.viewPager , R.id.tabLayout); // find widget in view
