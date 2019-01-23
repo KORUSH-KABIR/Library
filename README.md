@@ -92,3 +92,18 @@ Add it in your root build.gradle at the end of repositories:
         tabHelper.add(Fragment.class , R.drawable.icon);
         tabHelper.add(Fragment.class , "text");
 
+	
+//////////////////////////////////////////////////////////////////////////////
+
+
+# 4. Sample LanguageUtils Class:
+
+        LanguageUtils.changeLanguage(
+                getResources() ,
+                LanguageUtils.PERSIAN // get Persian resources (fa)
+        );
+
+        LanguageUtils.changeLanguage(
+                getResources() ,
+                LanguageUtils.ENGLISH // get English resources (en)
+        );
