@@ -112,7 +112,7 @@ Add it in your root build.gradle at the end of repositories:
 //////////////////////////////////////////////////////////////////////////////
 
 
-# 5. Sample FlasherImageView Class:
+# 5. Sample FlasherImageView:
 
 in xml:
     
@@ -132,4 +132,19 @@ in java:
         flasherImageView.autoChange(true);
         flasherImageView.start();
         flasherImageView.stop();
+
+
+
+	
+//////////////////////////////////////////////////////////////////////////////
+
+
+# 6. Sample PhotoView (Zoom Image View):
+
+in xml:
+    
+    <ir.aid.library.Frameworks.widget.PhotoView
+        android:id="@+id/pv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
