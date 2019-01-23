@@ -32,6 +32,12 @@ Add it in your root build.gradle at the end of repositories:
         utils.writeInteger ("key" , 85     );
         utils.writeLong    ("key" , 85L    );
 	
+	String   s = utils.readString  ("key" , "alternative" );
+        boolean b  = utils.readBoolean ("key" , false);
+        float   f  = utils.readFloat   ("key" , 1.02F);
+        int     i  = utils.readInteger ("key" , 0);
+        long    l  = utils.readLong    ("key" , 85L);
+	
 
 //////////////////////////////////////////////////////////////////////////////
 	
