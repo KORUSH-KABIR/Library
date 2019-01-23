@@ -1,4 +1,4 @@
-# Library
+# MyWorkerLibrary
 
 [![](https://jitpack.io/v/KORUSH-KABIR/Library.svg)](https://jitpack.io/#KORUSH-KABIR/Library)
 
@@ -18,3 +18,63 @@ Add it in your root build.gradle at the end of repositories:
   	dependencies {
 	        implementation 'com.github.KORUSH-KABIR:Library:2.0.5'
 	}
+	
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+# Sample SharedPreferenceUtils Class:
+
+        SharedPreferenceUtils utils = new SharedPreferenceUtils(this);
+        utils.writeString  ("key" , "text" );
+        utils.writeBoolean ("key" , true   );
+        utils.writeFloat   ("key" , 1.85F  );
+        utils.writeInteger ("key" , 85     );
+        utils.writeLong    ("key" , 85L    );
+	
+
+//////////////////////////////////////////////////////////////////////////////
+	
+	
+# Sample ConnectionHelper Class:
+
+        String url = "https://...";
+        int timeOut = 5000;
+        new ConnectionHelper(url , timeOut)
+                .addStringRequest("key" , "value")
+                .addFileRequest("key" , "path")
+                .getResponse(new OnGetResponse() {
+                    @Override
+                    public void notConnectToServer() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // can not connect to server
+                                // use of mainTread
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onSuccessResponse(String result) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // success to get
+                                // use of mainTread
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onNullResponse() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // if result = null
+                                // use of mainTread
+                            }
+                        });
+                    }
+                });
+
