@@ -107,3 +107,29 @@ Add it in your root build.gradle at the end of repositories:
                 getResources() ,
                 LanguageUtils.ENGLISH // get English resources (en)
         );
+
+	
+//////////////////////////////////////////////////////////////////////////////
+
+
+# 5. Sample FlasherImageView Class:
+
+in xml:
+    
+    <ir.aid.library.Frameworks.widget.FlasherImageView
+        android:id="@+id/fiv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:fimDefaultColor="#200000"
+        app:fimFirstColor="#E91E63"
+        app:fimSecondColor="#4CAF50"
+        app:fimStartAutoChange="false"
+        app:fimTimeChangeColor="4000" />
+	
+in java:
+
+        FlasherImageView flasherImageView = findViewById(R.id.fiv);
+        flasherImageView.autoChange(true);
+        flasherImageView.start();
+        flasherImageView.stop();
+
