@@ -12,4 +12,8 @@ public class FrameworkException extends Throwable {
         super(message, cause);
     }
 
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
+
 }

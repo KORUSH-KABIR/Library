@@ -109,4 +109,7 @@ public class ToastBuilder {
 //        }
 //    }
 
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
 }

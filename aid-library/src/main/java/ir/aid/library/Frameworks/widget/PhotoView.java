@@ -979,4 +979,8 @@ public class PhotoView extends AppCompatImageView {
     	Log.d(DEBUG, "Scale: " + n[Matrix.MSCALE_X] + " TransX: " + n[Matrix.MTRANS_X] + " TransY: " + n[Matrix.MTRANS_Y]);
     }
 
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
+
 }

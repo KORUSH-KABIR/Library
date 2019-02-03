@@ -68,4 +68,8 @@ public class SharedPreferenceUtils {
         editor.apply();
     }
 
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
+
 }

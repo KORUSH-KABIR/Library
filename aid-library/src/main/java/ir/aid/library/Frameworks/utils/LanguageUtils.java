@@ -33,4 +33,8 @@ public class LanguageUtils {
         }
         res.updateConfiguration(config,res.getDisplayMetrics());
     }
+
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
 }
