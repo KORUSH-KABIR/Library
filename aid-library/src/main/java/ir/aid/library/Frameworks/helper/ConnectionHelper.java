@@ -19,9 +19,9 @@ public class ConnectionHelper {
 
     private static final String DEVELOPER = "محمد علی ریاضتی";
 
-    private String configUrl;              // url php connection
-    private int timeOut;                  // time out request
-    private MultipartFormDataBody body = new MultipartFormDataBody();
+    private int timeOut;
+    private MultipartFormDataBody body;
+    private AsyncHttpPost post;
 
     /**
      * can be accessed from the outside.
@@ -30,7 +30,29 @@ public class ConnectionHelper {
      */
     public ConnectionHelper(@NonNull String configUrl , int timeOut){
         this.timeOut = timeOut;
-        this.configUrl = configUrl;
+        this.post = new AsyncHttpPost(configUrl);
+        this.body = new MultipartFormDataBody();
+    }
+
+    /**
+     * can be accessed from the outside.
+     * @param method string value for request method.
+     * @return class
+     */
+    public ConnectionHelper setMethodRequest(String method){
+        post.setMethod(method);
+        return this;
+    }
+
+    /**
+     * can be accessed from the outside.
+     * @param key string key for header.
+     * @param value string value for header.
+     * @return class
+     */
+    public ConnectionHelper addHeaderRequest(String key , String value){
+        post.addHeader(key , value);
+        return this;
     }
 
     /**
@@ -62,10 +84,7 @@ public class ConnectionHelper {
      */
     private void load(final OnGetResponse onGetResponse) {
 
-        AsyncHttpPost post = new AsyncHttpPost(configUrl);
-
         post.setTimeout(timeOut);
-
         post.setBody(body);
 
         AsyncHttpClient.getDefaultInstance().executeString(post, new AsyncHttpClient.StringCallback() {
