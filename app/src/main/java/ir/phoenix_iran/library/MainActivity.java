@@ -3,8 +3,6 @@ package ir.phoenix_iran.library;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import ir.aid.library.Frameworks.utils.SharedPreferenceUtils;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,14 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void create(){
 
-        SharedPreferenceUtils utils = new SharedPreferenceUtils(this);
-        utils.writeString("name" , "mohammad");
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
 }
