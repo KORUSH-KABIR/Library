@@ -46,6 +46,17 @@ public class ConnectionHelper {
 
     /**
      * can be accessed from the outside.
+     * @param name string name for header.
+     * @param value string value for header.
+     * @return class
+     */
+    public ConnectionHelper setHeaderRequest(String name , String value){
+        post.setHeader(name , value);
+        return this;
+    }
+
+    /**
+     * can be accessed from the outside.
      * @param key string key for header.
      * @param value string value for header.
      * @return class
