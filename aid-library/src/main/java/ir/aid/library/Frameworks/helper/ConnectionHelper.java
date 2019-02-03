@@ -6,9 +6,11 @@ import com.koushikdutta.async.http.AsyncHttpClient;
 import com.koushikdutta.async.http.AsyncHttpPost;
 import com.koushikdutta.async.http.AsyncHttpResponse;
 import com.koushikdutta.async.http.body.MultipartFormDataBody;
+import com.koushikdutta.async.http.body.Part;
 
 import java.io.File;
 
+import ir.aid.library.Interfaces.ConnectionMethod;
 import ir.aid.library.Interfaces.OnGetResponse;
 
 /*
@@ -18,6 +20,10 @@ import ir.aid.library.Interfaces.OnGetResponse;
 public class ConnectionHelper {
 
     private static final String DEVELOPER = "محمد علی ریاضتی";
+
+    public static final String METHOD_POST = "POST";
+    public static final String METHOD_GET = "GET";
+    public static final String METHOD_HEAD = "HEAD";
 
     private int timeOut;
     private MultipartFormDataBody body;
@@ -36,11 +42,22 @@ public class ConnectionHelper {
 
     /**
      * can be accessed from the outside.
+     * @param host string value for proxy host.
+     * @param port int value for proxy port.
+     * @return class
+     */
+    public ConnectionHelper setProxyRequest(String host , int port){
+        this.post.enableProxy(host , port);
+        return this;
+    }
+
+    /**
+     * can be accessed from the outside.
      * @param method string value for request method.
      * @return class
      */
-    public ConnectionHelper setMethodRequest(String method){
-        post.setMethod(method);
+    public ConnectionHelper setMethodRequest(@ConnectionMethod String method){
+        this.post.setMethod(method);
         return this;
     }
 
@@ -51,7 +68,7 @@ public class ConnectionHelper {
      * @return class
      */
     public ConnectionHelper setHeaderRequest(String name , String value){
-        post.setHeader(name , value);
+        this.post.setHeader(name , value);
         return this;
     }
 
@@ -62,7 +79,17 @@ public class ConnectionHelper {
      * @return class
      */
     public ConnectionHelper addHeaderRequest(String key , String value){
-        post.addHeader(key , value);
+        this.post.addHeader(key , value);
+        return this;
+    }
+
+    /**
+     * can be accessed from the outside.
+     * @param part for sending to the server.
+     * @return class
+     */
+    public ConnectionHelper addRequest(Part part){
+        this.body.addPart(part);
         return this;
     }
 
@@ -73,7 +100,7 @@ public class ConnectionHelper {
      * @return class
      */
     public ConnectionHelper addStringRequest(String key , String value){
-        body.addStringPart(key , value);
+        this.body.addStringPart(key , value);
         return this;
     }
 
@@ -84,7 +111,7 @@ public class ConnectionHelper {
      * @return class
      */
     public ConnectionHelper addFileRequest(String key , String path){
-        body.addFilePart(key , new File(path));
+        this.body.addFilePart(key , new File(path));
         return this;
     }
 
@@ -93,10 +120,10 @@ public class ConnectionHelper {
      * sending request to the server.
      * @param onGetResponse interface for get callback.
      */
-    private void load(final OnGetResponse onGetResponse) {
+    private void getString(final OnGetResponse onGetResponse) {
 
-        post.setTimeout(timeOut);
-        post.setBody(body);
+        this.post.setTimeout(timeOut);
+        this.post.setBody(body);
 
         AsyncHttpClient.getDefaultInstance().executeString(post, new AsyncHttpClient.StringCallback() {
             @Override
@@ -119,16 +146,31 @@ public class ConnectionHelper {
     /**
      * can be accessed from the outside.
      * @param onGetResponse interface callback.
-     * @return class.
      */
-    public ConnectionHelper getResponse(final OnGetResponse onGetResponse){
+    public void getStringResponse(final OnGetResponse onGetResponse){
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                load(onGetResponse);
+                getString(onGetResponse);
             }
         }).start();
+    }
+
+    /**
+     * can be accessed from the outside.
+     * @return method.
+     */
+    public String getRequestMethod(){
+        return this.post.getMethod();
+    }
+
+    /**
+     * disabled all proxy from request.
+     * @return class.
+     */
+    private ConnectionHelper disableProxy(){
+        this.post.disableProxy();
         return this;
     }
 
