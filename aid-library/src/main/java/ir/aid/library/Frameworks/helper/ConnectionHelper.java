@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.koushikdutta.async.http.AsyncHttpClient;
 import com.koushikdutta.async.http.AsyncHttpPost;
 import com.koushikdutta.async.http.AsyncHttpResponse;
+import com.koushikdutta.async.http.Headers;
 import com.koushikdutta.async.http.body.MultipartFormDataBody;
 import com.koushikdutta.async.http.body.Part;
 
@@ -19,7 +20,7 @@ import ir.aid.library.Interfaces.OnGetResponse;
  */
 public class ConnectionHelper {
 
-    private static final String DEVELOPER = "محمد علی ریاضتی";
+    private static final String DEVELOPER = "Mohammad Ali Riazati";
 
     public static final String METHOD_POST = "POST";
     public static final String METHOD_GET = "GET";
@@ -80,6 +81,16 @@ public class ConnectionHelper {
      */
     public ConnectionHelper addHeaderRequest(String key , String value){
         this.post.addHeader(key , value);
+        return this;
+    }
+
+    /**
+     * can be accessed from the outside.
+     * @param headers for sending to the server.
+     * @return class
+     */
+    public ConnectionHelper addRequest(Headers headers){
+        this.body.addPart(new Part(headers));
         return this;
     }
 
@@ -172,6 +183,13 @@ public class ConnectionHelper {
     private ConnectionHelper disableProxy(){
         this.post.disableProxy();
         return this;
+    }
+
+    /**
+     * @return Developer Name.
+     */
+    public static String getDeveloper(){
+        return DEVELOPER;
     }
 
 }

@@ -150,4 +150,8 @@ public class IntroDesignHelper {
         void items(View view, int position);
     }
 
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
+
 }

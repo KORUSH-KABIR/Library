@@ -125,4 +125,8 @@ public class PhotoHelper {
                 .error(R.drawable.pic_profile)
                 .into(imageView);
     }
+
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
 }

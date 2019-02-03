@@ -155,4 +155,7 @@ public class ToolbarHelper {
         return this;
     }
 
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
 }

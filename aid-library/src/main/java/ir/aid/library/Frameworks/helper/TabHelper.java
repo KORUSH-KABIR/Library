@@ -155,4 +155,7 @@ public class TabHelper {
         viewPager.setCurrentItem(position);
     }
 
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
 }

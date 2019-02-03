@@ -28,5 +28,9 @@ public class ViewPagerScroller extends Scroller {
         super.startScroll(startX, startY, dx, dy, mScrollDuration);
     }
 
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
+
 }
 

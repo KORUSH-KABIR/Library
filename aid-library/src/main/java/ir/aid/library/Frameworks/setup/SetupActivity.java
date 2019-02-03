@@ -35,4 +35,8 @@ public abstract class SetupActivity extends AppCompatActivity {
             }
         }
     }
+
+    public static String getDeveloper(){
+        return DEVELOPER;
+    }
 }
